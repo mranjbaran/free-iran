@@ -23,7 +23,7 @@ MALE_NAMES = {
     'markus', 'martin', 'matthias', 'max', 'maximilian', 'michael', 'nico', 'niklas', 'nils',
     'norbert', 'olaf', 'oliver', 'oskar', 'otto', 'pascal', 'patrick', 'paul', 'peter', 'philipp',
     'rainer', 'ralf', 'rene', 'richard', 'robert', 'roland', 'rolf', 'sebastian', 'stefan',
-    'steffen', 'stephan', 'sven', 'theo', 'theodor', 'thomas', 'thorsten', 'till', 'tim', 'tobias',
+    'steffen', 'stephan', 'sven', 'theo', 'theodor', 'thomas', 'thorsten', 'till', 'tim', 'timon', 'tobias',
     'tom', 'torsten', 'ulrich', 'uwe', 'volker', 'walter', 'werner', 'wilfried', 'wilhelm', 'wolfgang'
 }
 
