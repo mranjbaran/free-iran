@@ -13,10 +13,10 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-# Load contact URLs from archived CSV
+# Load contact URLs from CSV database
 CONTACT_URL_MAP = {}
 def load_contact_urls():
-    csv_path = os.path.join('archive', 'bundestag_complete_with_wahlkreis.csv')
+    csv_path = os.path.join('data', 'bundestag_contacts.csv')
     if os.path.exists(csv_path):
         try:
             with open(csv_path, 'r', encoding='utf-8') as f:
@@ -37,11 +37,11 @@ def load_contact_urls():
                         name_key2 = name_reversed.lower()
                         CONTACT_URL_MAP[name_key2] = row['contact_url']
                     
-            print(f"✓ Loaded {len(CONTACT_URL_MAP)} contact URLs from archive")
+            print(f"✓ Loaded {len(CONTACT_URL_MAP)} contact URLs from database")
         except Exception as e:
             print(f"Warning: Could not load contact URLs: {e}")
     else:
-        print("Warning: archive/bundestag_complete_with_wahlkreis.csv not found")
+        print("Warning: data/bundestag_contacts.csv not found")
 
 load_contact_urls()
 

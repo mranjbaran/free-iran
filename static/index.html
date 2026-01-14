@@ -37,19 +37,25 @@
     <div id="emailModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; overflow: auto;">
         <div style="background: white; max-width: 700px; margin: 50px auto; padding: 30px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
             <h2 style="margin-top: 0; color: #667eea;">📧 E-Mail Vorlage für Iran-Solidarität</h2>
-            <p style="color: #666; margin-bottom: 20px;">Kopieren Sie diese Nachricht und fügen Sie sie im Kontaktformular ein:</p>
+            <p style="color: #666; margin-bottom: 20px;"><strong>Anleitung:</strong></p>
+            <ol style="color: #666; margin-bottom: 20px; line-height: 1.8;">
+                <li><strong>Bearbeiten Sie die Nachricht</strong> nach Bedarf (Sie können den Text ändern)</li>
+                <li><strong>Klicken Sie auf "Nachricht kopieren"</strong> um die Nachricht in die Zwischenablage zu kopieren</li>
+                <li><strong>Klicken Sie auf "Zum Kontaktformular"</strong> um das Bundestag-Formular zu öffnen</li>
+                <li><strong>Fügen Sie die Nachricht</strong> im Feld "Nachricht" ein (Strg+V)</li>
+            </ol>
             
             <div style="background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 5px; padding: 15px; margin-bottom: 20px;">
-                <textarea id="emailTemplate" readonly style="width: 100%; min-height: 300px; border: none; background: transparent; font-family: Arial, sans-serif; font-size: 14px; resize: vertical;"></textarea>
+                <textarea id="emailTemplate" style="width: 100%; min-height: 300px; border: none; background: transparent; font-family: Arial, sans-serif; font-size: 14px; resize: vertical;"></textarea>
             </div>
             
             <div style="display: flex; gap: 10px; justify-content: space-between;">
-                <button onclick="copyEmailTemplate()" style="flex: 1; background: #48bb78; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px;">📋 Nachricht kopieren</button>
-                <button onclick="openContactForm()" style="flex: 1; background: #667eea; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px;">✉️ Zum Kontaktformular</button>
+                <button onclick="copyEmailTemplate()" style="flex: 1; background: #48bb78; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px;">📋 1. Nachricht kopieren</button>
+                <button onclick="openContactForm()" style="flex: 1; background: #667eea; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px;">✉️ 2. Zum Kontaktformular</button>
                 <button onclick="closeEmailModal()" style="background: #e53e3e; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-weight: bold;">✕</button>
             </div>
             
-            <p id="copyStatus" style="margin-top: 15px; text-align: center; color: #48bb78; font-weight: bold; display: none;">✓ In Zwischenablage kopiert!</p>
+            <p id="copyStatus" style="margin-top: 15px; text-align: center; color: #48bb78; font-weight: bold; display: none;">✓ In Zwischenablage kopiert! Klicken Sie jetzt auf "Zum Kontaktformular"</p>
         </div>
     </div>
     

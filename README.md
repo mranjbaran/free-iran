@@ -77,16 +77,37 @@ Navigate to: **http://localhost:8000/index.html**
 
 ```
 free.iran/
-├── abgeordnetenwatch_server.py    # Flask backend (scraping)
-├── index.html                      # Main user interface
-├── start_server.py                # HTTP server for frontend
-├── requirements.txt               # Python dependencies
-├── archive/                       # Old static dataset approach
-│   ├── bundestag_complete_with_wahlkreis.csv
-│   ├── plz_to_members.json
-│   └── ... (archived files)
-└── README.md
+├── data/                           # Core data files
+│   └── bundestag_contacts.csv     # MP contact URLs (634 members)
+├── static/                         # Frontend files
+│   └── index.html                 # Main user interface
+├── abgeordnetenwatch_server.py     # Flask backend (scraping API)
+├── start_server.py                 # HTTP server for static files
+├── requirements.txt                # Python dependencies
+├── TODO.md                         # Project roadmap
+├── .gitignore                      # Git exclusions
+├── archive/                        # Old implementations & test files
+│   └── README.md                  # Why files were archived
+└── README.md                       # This file
 ```
+
+### Key Components
+
+**Backend (`abgeordnetenwatch_server.py`):**
+- Flask REST API on port 5000
+- Real-time web scraping with Selenium
+- Loads 634 MP contact URLs from `data/bundestag_contacts.csv`
+- Returns MP data: name, party, constituency, photo, profile URL, contact URL
+
+**Frontend (`static/index.html`):**
+- PLZ search interface
+- MP cards with photos and contact buttons
+- Email template modal for Iran solidarity messaging
+- Responsive design
+
+**Data (`data/bundestag_contacts.csv`):**
+- 634 Bundestag members with contact form URLs
+- Format: name, mdbId, fraktion, wahlkreis, contact_url
 
 ## 🎯 How It Works
 
