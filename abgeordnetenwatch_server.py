@@ -7,9 +7,43 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 import time
+import csv
+import os
 
 app = Flask(__name__)
 CORS(app)
+
+# Load contact URLs from archived CSV
+CONTACT_URL_MAP = {}
+def load_contact_urls():
+    csv_path = os.path.join('archive', 'bundestag_complete_with_wahlkreis.csv')
+    if os.path.exists(csv_path):
+        try:
+            with open(csv_path, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    # CSV has names in "Last, First" format
+                    # Store both formats for matching
+                    name_csv = row['name'].strip()
+                    
+                    # Store original format: "Meiser, Pascal"
+                    name_key1 = name_csv.lower()
+                    CONTACT_URL_MAP[name_key1] = row['contact_url']
+                    
+                    # Also store reversed format: "Pascal Meiser"
+                    if ',' in name_csv:
+                        parts = name_csv.split(',', 1)
+                        name_reversed = f"{parts[1].strip()} {parts[0].strip()}"
+                        name_key2 = name_reversed.lower()
+                        CONTACT_URL_MAP[name_key2] = row['contact_url']
+                    
+            print(f"✓ Loaded {len(CONTACT_URL_MAP)} contact URLs from archive")
+        except Exception as e:
+            print(f"Warning: Could not load contact URLs: {e}")
+    else:
+        print("Warning: archive/bundestag_complete_with_wahlkreis.csv not found")
+
+load_contact_urls()
 
 def scrape_abgeordnetenwatch_by_plz(plz):
     """
@@ -126,6 +160,12 @@ def scrape_abgeordnetenwatch_by_plz(plz):
                         mp_data['image_url'] = src
                 except:
                     mp_data['image_url'] = None
+                                # Add contact URL from archived data
+                name_key = mp_data['name'].strip().lower()
+                mp_data['contact_url'] = CONTACT_URL_MAP.get(name_key, None)
+                                # Add contact URL from archived data
+                name_key = mp_data['name'].strip().lower()
+                mp_data['contact_url'] = CONTACT_URL_MAP.get(name_key, None)
                 
                 politicians.append(mp_data)
                 print(f"✓ {mp_data['name']} ({mp_data['party']})")

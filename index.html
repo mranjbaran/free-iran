@@ -178,6 +178,9 @@
                 
                 data.members.forEach(member => {
                     const imageUrl = member.image_url || 'https://via.placeholder.com/120?text=Kein+Bild';
+                    const contactButton = member.contact_url 
+                        ? `<a href="${member.contact_url}" target="_blank" class="contact-link" style="margin-top: 10px; display: inline-block; background: #667eea; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-weight: bold;">✉️ Kontakt aufnehmen</a>`
+                        : '';
                     html += `
                         <div class="member-card" style="display: flex; align-items: center; gap: 20px; text-align: left;">
                             <img src="${imageUrl}" alt="${member.name}" 
@@ -187,7 +190,10 @@
                                 <div class="member-name">${member.name}</div>
                                 <span class="member-party ${getPartyClass(member.party)}">${member.party || 'Parteilos'}</span>
                                 <div style="margin-top: 5px; font-size: 0.9em; color: #666;">${member.constituency}</div>
-                                <a href="${member.profile_url}" target="_blank" class="contact-link" style="margin-top: 10px; display: inline-block;">📋 Profil auf abgeordnetenwatch.de</a>
+                                <div style="margin-top: 10px;">
+                                    ${contactButton}
+                                    <a href="${member.profile_url}" target="_blank" class="contact-link" style="margin-left: 10px; display: inline-block;">📋 Profil ansehen</a>
+                                </div>
                             </div>
                         </div>
                     `;
