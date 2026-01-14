@@ -285,6 +285,8 @@ Mit freundlichen Grüßen,
             const modal = document.getElementById('emailModal');
             const textarea = document.getElementById('emailTemplate');
             
+            console.log('showEmailModal called with:', { contactUrl, mpName, gender });
+            
             // Get last name
             const lastName = mpName.split(' ').pop();
             
@@ -297,6 +299,8 @@ Mit freundlichen Grüßen,
             } else {
                 salutation = 'Sehr geehrtes Mitglied des Deutschen Bundestages';
             }
+            
+            console.log('Generated salutation:', salutation);
             
             // Replace placeholder with personalized salutation
             let personalizedTemplate = emailTemplateGerman.replace('[SALUTATION]', salutation);
