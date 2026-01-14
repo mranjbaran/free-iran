@@ -14,20 +14,104 @@ from gender_data import GENDER_LOOKUP
 app = Flask(__name__)
 CORS(app)
 
+# Comprehensive German first names for fallback gender detection
+MALE_FIRST_NAMES = {
+    'achim', 'adam', 'adis', 'adrian', 'alaa', 'albert', 'alexander', 'alexis', 'alois', 'andreas',
+    'ansgar', 'anton', 'armin', 'arne', 'artur', 'ates', 'axel', 'balten', 'bastian', 'benedikt',
+    'benjamin', 'bernd', 'boris', 'carl', 'carl-philipp', 'carsten', 'cem', 'christian', 'christoph',
+    'christopher', 'daniel', 'david', 'denis', 'dennis', 'dietmar', 'dirk', 'enrico', 'erhard',
+    'erik', 'fabian', 'falko', 'felix', 'ferat', 'florian', 'frank', 'frederik', 'friedrich',
+    'fritz', 'georg', 'gereon', 'gerhard', 'gerold', 'gerrit', 'gottfried', 'gregor', 'gunther',
+    'günter', 'götz', 'gökay', 'hans', 'hans-jürgen', 'hansjörg', 'hannes', 'harald', 'hauke',
+    'heiko', 'heinrich', 'helge', 'helmut', 'hendrik', 'henning', 'henri', 'herbert', 'hermann',
+    'holger', 'hubertus', 'ingo', 'isaac', 'jakob', 'jan', 'jan-marco', 'jan-niclas', 'jan-wilhelm',
+    'janosch', 'joachim', 'jochen', 'johann', 'johannes', 'jonas', 'jorrit', 'josef', 'julian',
+    'jörg', 'jörn', 'jürgen', 'kai', 'karl', 'karsten', 'kay', 'klaus', 'knut', 'konstantin',
+    'konrad', 'kurt', 'lars', 'leif', 'leif-erik', 'leon', 'lorenz', 'lukas', 'luke', 'luigi',
+    'lutz', 'macit', 'maik', 'malte', 'manfred', 'manuel', 'marc', 'marcel', 'marco', 'marcus',
+    'mario', 'mark', 'markus', 'martin', 'marvin', 'matthias', 'max', 'maximilian', 'metin',
+    'micha', 'michael', 'mirco', 'moritz', 'nicolai', 'niklas', 'nils', 'norbert', 'olaf', 'olav',
+    'oliver', 'omid', 'oskar', 'otto', 'parsa', 'pascal', 'patrick', 'paul', 'peter', 'philipp',
+    'philip', 'pierre', 'rainer', 'raimond', 'ralf', 'ralph', 'reinhard', 'rene', 'rené', 'reza',
+    'richard', 'robert', 'robin', 'rocco', 'roderich', 'roland', 'rolf', 'ronald', 'ruben', 'rüdiger',
+    'sascha', 'sebastian', 'sepp', 'sergej', 'sieghard', 'stefan', 'steffen', 'stephan', 'sven',
+    'tarek', 'theo', 'theodor', 'thomas', 'thorsten', 'til', 'tilman', 'tim', 'timon', 'tino',
+    'tobias', 'torben', 'truels', 'udo', 'ulrich', 'uwe', 'vinzenz', 'volker', 'waldemar', 'walter',
+    'werner', 'wilfried', 'wilhelm', 'wolfgang'
+}
+
+FEMALE_FIRST_NAMES = {
+    'agnieszka', 'alexandra', 'andrea', 'angela', 'angelika', 'anja', 'anke', 'anna', 'annalena',
+    'anne', 'anne-mieke', 'anette', 'annette', 'annika', 'astrid', 'ayse', 'barbara', 'beate',
+    'bettina', 'birgit', 'britta', 'bärbel', 'cansin', 'caren', 'carina', 'carolin', 'caroline',
+    'catarina', 'chantal', 'charlotte', 'christiane', 'christina', 'christine', 'clara', 'claudia',
+    'corinna', 'cornelia', 'dagmar', 'daniela', 'deborah', 'denise', 'desiree', 'diana', 'doris',
+    'dorothee', 'dunja', 'elena', 'elisabeth', 'elke', 'ellen', 'emilia', 'emma', 'erika', 'esra',
+    'esther', 'eva', 'filiz', 'franziska', 'frauke', 'gabriela', 'gitta', 'gisela', 'gudrun',
+    'hannah', 'heide', 'heidi', 'heike', 'helga', 'hilde', 'hildegard', 'hülya', 'ida', 'ilse',
+    'ina', 'ines', 'inge', 'ingeborg', 'ingrid', 'irene', 'iris', 'isabel', 'isabell', 'isabelle',
+    'jamila', 'jana', 'janina', 'jasmin', 'jasmina', 'jeanne', 'jennifer', 'jessica', 'johanna',
+    'josephine', 'julia', 'juliane', 'jutta', 'karin', 'karla', 'karoline', 'katalin', 'katharina',
+    'kathrin', 'katja', 'katrin', 'kerstin', 'kirsten', 'klara', 'kristin', 'lamya', 'lara', 'laura',
+    'lea', 'lena', 'linda', 'lisa', 'luise', 'mandy', 'manuela', 'margarete', 'mareike', 'maren',
+    'maria', 'marie', 'marion', 'marlene', 'marta', 'martha', 'martina', 'mechthild', 'melanie',
+    'michaela', 'monika', 'nadine', 'nancy', 'natalie', 'nicole', 'nina', 'ophelia', 'ottilie',
+    'patricia', 'paula', 'petra', 'pia', 'rasha', 'rebecca', 'reem', 'regina', 'renate', 'ricarda',
+    'rita', 'ronja', 'rosa', 'rosemarie', 'ruth', 'sabine', 'sabrina', 'sahra', 'sanae', 'sandra',
+    'sara', 'sarah', 'saskia', 'schahina', 'serap', 'siemtje', 'silke', 'silvia', 'simone', 'sofia',
+    'sonja', 'sophie', 'stefanie', 'steffi', 'stella', 'susanne', 'svenja', 'swantje', 'sylvia',
+    'tamara', 'tanja', 'teresa', 'theresa', 'tijen', 'ulrike', 'ursula', 'ute', 'vanessa', 'vera',
+    'verena', 'veronika', 'victoria', 'violetta', 'waltraud', 'wiebke', 'zada', 'zoe'
+}
+
 def normalize_name(name):
-    """Normalize name by removing Dr. prefix and extra spaces"""
+    """Normalize name by removing Dr./Prof. prefix and extra spaces"""
     import re
-    # Remove Dr., dr., Dr, dr prefixes (with or without dot, with optional spaces)
-    normalized = re.sub(r'\b[Dd][Rr]\.?\s+', '', name)
+    # Remove Dr., Prof., prof. dr., Prof. Dr. prefixes (with or without dot, with optional spaces)
+    normalized = re.sub(r'\b[Pp][Rr][Oo][Ff]\.?\s+[Dd][Rr]\.?\s+', '', name)
+    normalized = re.sub(r'\b[Dd][Rr]\.?\s+[Mm][Ee][Dd]\.?\s+', '', normalized)
+    normalized = re.sub(r'\b[Pp][Rr][Oo][Ff]\.?\s+', '', normalized)
+    normalized = re.sub(r'\b[Dd][Rr]\.?\s+', '', normalized)
     # Remove extra spaces
     normalized = ' '.join(normalized.split())
     return normalized.strip()
 
+def extract_first_name(full_name):
+    """Extract first name from full name (handles 'Last, First' or 'First Last' formats)"""
+    normalized = normalize_name(full_name)
+    
+    # Handle "Last, First" format
+    if ',' in normalized:
+        parts = normalized.split(',', 1)
+        if len(parts) > 1:
+            first_name = parts[1].strip().split()[0]
+            return first_name.lower()
+    
+    # Handle "First Last" format
+    parts = normalized.split()
+    if parts:
+        return parts[0].lower()
+    
+    return ''
+
 def detect_gender(full_name):
-    """Detect gender using comprehensive MP database"""
-    # Normalize and try exact match (case-insensitive)
+    """Detect gender using comprehensive MP database with first-name fallback"""
+    # First try exact match (case-insensitive)
     normalized_name = normalize_name(full_name).lower()
-    return GENDER_LOOKUP.get(normalized_name, 'unknown')
+    gender = GENDER_LOOKUP.get(normalized_name)
+    
+    if gender and gender != 'unknown':
+        return gender
+    
+    # Fallback: try first name pattern matching
+    first_name = extract_first_name(full_name)
+    
+    if first_name in MALE_FIRST_NAMES:
+        return 'male'
+    elif first_name in FEMALE_FIRST_NAMES:
+        return 'female'
+    else:
+        return 'unknown'
 
 # Load contact URLs from CSV database
 CONTACT_URL_MAP = {}
