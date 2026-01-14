@@ -33,6 +33,26 @@
     </style>
 </head>
 <body>
+    <!-- Email Template Modal -->
+    <div id="emailModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; overflow: auto;">
+        <div style="background: white; max-width: 700px; margin: 50px auto; padding: 30px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+            <h2 style="margin-top: 0; color: #667eea;">📧 E-Mail Vorlage für Iran-Solidarität</h2>
+            <p style="color: #666; margin-bottom: 20px;">Kopieren Sie diese Nachricht und fügen Sie sie im Kontaktformular ein:</p>
+            
+            <div style="background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 5px; padding: 15px; margin-bottom: 20px;">
+                <textarea id="emailTemplate" readonly style="width: 100%; min-height: 300px; border: none; background: transparent; font-family: Arial, sans-serif; font-size: 14px; resize: vertical;"></textarea>
+            </div>
+            
+            <div style="display: flex; gap: 10px; justify-content: space-between;">
+                <button onclick="copyEmailTemplate()" style="flex: 1; background: #48bb78; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px;">📋 Nachricht kopieren</button>
+                <button onclick="openContactForm()" style="flex: 1; background: #667eea; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px;">✉️ Zum Kontaktformular</button>
+                <button onclick="closeEmailModal()" style="background: #e53e3e; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-weight: bold;">✕</button>
+            </div>
+            
+            <p id="copyStatus" style="margin-top: 15px; text-align: center; color: #48bb78; font-weight: bold; display: none;">✓ In Zwischenablage kopiert!</p>
+        </div>
+    </div>
+    
     <div class="container">
         <h1>🏛️ Bundestag Abgeordnete Finder</h1>
         <p class="subtitle">Finden Sie Ihre Abgeordneten nach PLZ</p>
@@ -178,9 +198,10 @@
                 
                 data.members.forEach(member => {
                     const imageUrl = member.image_url || 'https://via.placeholder.com/120?text=Kein+Bild';
+                    const mpNameEscaped = member.name.replace(/'/g, "\\'");
                     const contactButton = member.contact_url 
-                        ? `<a href="${member.contact_url}" target="_blank" class="contact-link" style="margin-top: 10px; display: inline-block; background: #667eea; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-weight: bold;">✉️ Kontakt aufnehmen</a>`
-                        : '';
+                        ? `<button onclick="showEmailModal('${member.contact_url}', '${mpNameEscaped}')" class="contact-link" style="margin-top: 10px; display: inline-block; background: #667eea; color: white; padding: 8px 16px; border-radius: 5px; font-weight: bold; border: none; cursor: pointer;">✉️ Kontakt aufnehmen</button>`
+                        : `<div style="margin-top: 10px; color: #999; font-size: 0.9em;">⚠️ Kontakt-URL nicht verfügbar</div>`;
                     html += `
                         <div class="member-card" style="display: flex; align-items: center; gap: 20px; text-align: left;">
                             <img src="${imageUrl}" alt="${member.name}" 
@@ -190,10 +211,7 @@
                                 <div class="member-name">${member.name}</div>
                                 <span class="member-party ${getPartyClass(member.party)}">${member.party || 'Parteilos'}</span>
                                 <div style="margin-top: 5px; font-size: 0.9em; color: #666;">${member.constituency}</div>
-                                <div style="margin-top: 10px;">
-                                    ${contactButton}
-                                    <a href="${member.profile_url}" target="_blank" class="contact-link" style="margin-left: 10px; display: inline-block;">📋 Profil ansehen</a>
-                                </div>
+                                ${contactButton}
                             </div>
                         </div>
                     `;
@@ -231,6 +249,70 @@
         document.getElementById('searchInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 search();
+            }
+        });
+        
+        // Email template from README (German version)
+        const emailTemplateGerman = `Sehr geehrte/r [Herr/Frau] [Nachname],
+
+als Bürgerin/Bürger Ihres Wahlkreises wende ich mich heute an Sie, um Sie an die Resolution des Deutschen Bundestags vom 21. November 2024 zur „Solidarität mit den Menschen in Iran" zu erinnern.
+
+Seit dem Beginn der Proteste unter dem Motto „Frau, Leben, Freiheit" im September 2022 haben die iranischen Behörden eine brutale Unterdrückungskampagne gegen friedliche Demonstrierende, Journalistinnen, Menschenrechtsverteidigerinnen und Minderheiten geführt. Hunderte Menschen wurden getötet, Tausende inhaftiert, und viele wurden gefoltert oder hingerichtet.
+
+Ich bitte Sie, sich weiterhin aktiv für die Menschenrechte im Iran einzusetzen und konkrete Maßnahmen zu unterstützen:
+
+• Druck auf die iranische Regierung zur Freilassung politischer Gefangener
+• Unterstützung unabhängiger Untersuchungen von Menschenrechtsverletzungen
+• Stärkung der Sanktionen gegen Verantwortliche für Repression
+• Schutz und Aufnahme verfolgter iranischer Aktivistinnen und Aktivisten
+
+Die Menschen im Iran verdienen unsere Solidarität und Unterstützung. Ich hoffe auf Ihr Engagement in dieser wichtigen Angelegenheit.
+
+Mit freundlichen Grüßen,
+[Ihr Name]`;
+        
+        let currentContactUrl = '';
+        
+        function showEmailModal(contactUrl, mpName) {
+            currentContactUrl = contactUrl;
+            const modal = document.getElementById('emailModal');
+            const textarea = document.getElementById('emailTemplate');
+            
+            // Replace [Nachname] with MP last name
+            let personalizedTemplate = emailTemplateGerman.replace('[Nachname]', mpName.split(' ').pop());
+            textarea.value = personalizedTemplate;
+            
+            modal.style.display = 'block';
+            document.getElementById('copyStatus').style.display = 'none';
+        }
+        
+        function closeEmailModal() {
+            document.getElementById('emailModal').style.display = 'none';
+        }
+        
+        function copyEmailTemplate() {
+            const textarea = document.getElementById('emailTemplate');
+            textarea.select();
+            document.execCommand('copy');
+            
+            const status = document.getElementById('copyStatus');
+            status.style.display = 'block';
+            setTimeout(() => {
+                status.style.display = 'none';
+            }, 3000);
+        }
+        
+        function openContactForm() {
+            if (currentContactUrl) {
+                window.open(currentContactUrl, '_blank');
+                closeEmailModal();
+            }
+        }
+        
+        // Close modal on outside click
+        document.getElementById('emailModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeEmailModal();
             }
         });
     </script>
