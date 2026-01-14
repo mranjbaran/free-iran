@@ -9,56 +9,25 @@ from selenium.webdriver.firefox.options import Options
 import time
 import csv
 import os
+from gender_data import GENDER_LOOKUP
 
 app = Flask(__name__)
 CORS(app)
 
-# Common German first names for gender detection
-MALE_NAMES = {
-    'alexander', 'andreas', 'axel', 'benjamin', 'bernd', 'christian', 'christoph', 'daniel', 
-    'david', 'dieter', 'dirk', 'felix', 'florian', 'frank', 'friedrich', 'georg', 'gerhard',
-    'hans', 'harald', 'hartmut', 'heinrich', 'helmut', 'hendrik', 'herbert', 'hermann', 'holger',
-    'jan', 'jens', 'joachim', 'johannes', 'jörg', 'josef', 'jürgen', 'kai', 'karl', 'klaus',
-    'konstantin', 'lars', 'leon', 'lukas', 'manfred', 'marc', 'marco', 'marcus', 'mario', 'mark',
-    'markus', 'martin', 'matthias', 'max', 'maximilian', 'michael', 'nico', 'niklas', 'nils',
-    'norbert', 'olaf', 'oliver', 'oskar', 'otto', 'pascal', 'patrick', 'paul', 'peter', 'philipp',
-    'rainer', 'ralf', 'rene', 'richard', 'robert', 'roland', 'rolf', 'sebastian', 'stefan',
-    'steffen', 'stephan', 'sven', 'theo', 'theodor', 'thomas', 'thorsten', 'till', 'tim', 'timon', 'tobias',
-    'tom', 'torsten', 'ulrich', 'uwe', 'volker', 'walter', 'werner', 'wilfried', 'wilhelm', 'wolfgang'
-}
-
-FEMALE_NAMES = {
-    'alexandra', 'andrea', 'angela', 'angelika', 'anja', 'anke', 'anna', 'anne', 'annette',
-    'astrid', 'barbara', 'beate', 'bettina', 'birgit', 'brigitte', 'carina', 'carla', 'carmen',
-    'charlotte', 'christa', 'christiane', 'christina', 'christine', 'claudia', 'cornelia',
-    'daniela', 'diana', 'doris', 'elena', 'elisabeth', 'elke', 'emilia', 'emma', 'erika', 'eva',
-    'franziska', 'gabriele', 'gisela', 'gudrun', 'hannah', 'heide', 'heike', 'helga', 'hilde',
-    'hildegard', 'ida', 'ilse', 'ina', 'ines', 'inge', 'ingeborg', 'ingrid', 'irene', 'iris',
-    'isabel', 'isabell', 'isabelle', 'jana', 'janina', 'jasmin', 'jennifer', 'jessica', 'johanna',
-    'julia', 'juliane', 'jutta', 'karin', 'karla', 'katharina', 'kathrin', 'katja', 'katrin',
-    'kerstin', 'kirsten', 'klara', 'kristin', 'lara', 'laura', 'lea', 'lena', 'lisa', 'luise',
-    'manuela', 'margarete', 'maria', 'marie', 'marion', 'marta', 'martha', 'martina', 'melanie',
-    'michaela', 'monika', 'nadine', 'natalie', 'nicole', 'nina', 'patricia', 'petra', 'pia',
-    'regina', 'renate', 'rita', 'rosa', 'rosemarie', 'ruth', 'sabine', 'sabrina', 'sandra', 'sara',
-    'sarah', 'silke', 'simone', 'sofia', 'sophie', 'stefanie', 'susanne', 'svenja', 'tanja',
-    'teresa', 'theresa', 'ulrike', 'ursula', 'ute', 'vanessa', 'vera', 'veronika', 'waltraud'
-}
+def normalize_name(name):
+    """Normalize name by removing Dr. prefix and extra spaces"""
+    import re
+    # Remove Dr., dr., Dr, dr prefixes (with or without dot, with optional spaces)
+    normalized = re.sub(r'\b[Dd][Rr]\.?\s+', '', name)
+    # Remove extra spaces
+    normalized = ' '.join(normalized.split())
+    return normalized.strip()
 
 def detect_gender(full_name):
-    """Detect gender from first name using common German names"""
-    # Extract first name (assumes "First Last" format)
-    parts = full_name.strip().split()
-    if not parts:
-        return 'unknown'
-    
-    first_name = parts[0].lower()
-    
-    if first_name in MALE_NAMES:
-        return 'male'
-    elif first_name in FEMALE_NAMES:
-        return 'female'
-    else:
-        return 'unknown'
+    """Detect gender using comprehensive MP database"""
+    # Normalize and try exact match (case-insensitive)
+    normalized_name = normalize_name(full_name).lower()
+    return GENDER_LOOKUP.get(normalized_name, 'unknown')
 
 # Load contact URLs from CSV database
 CONTACT_URL_MAP = {}
@@ -73,13 +42,16 @@ def load_contact_urls():
                     # Store both formats for matching
                     name_csv = row['name'].strip()
                     
+                    # Normalize name (remove Dr. prefix)
+                    name_normalized = normalize_name(name_csv)
+                    
                     # Store original format: "Meiser, Pascal"
-                    name_key1 = name_csv.lower()
+                    name_key1 = name_normalized.lower()
                     CONTACT_URL_MAP[name_key1] = row['contact_url']
                     
                     # Also store reversed format: "Pascal Meiser"
-                    if ',' in name_csv:
-                        parts = name_csv.split(',', 1)
+                    if ',' in name_normalized:
+                        parts = name_normalized.split(',', 1)
                         name_reversed = f"{parts[1].strip()} {parts[0].strip()}"
                         name_key2 = name_reversed.lower()
                         CONTACT_URL_MAP[name_key2] = row['contact_url']
@@ -207,14 +179,11 @@ def scrape_abgeordnetenwatch_by_plz(plz):
                         mp_data['image_url'] = src
                 except:
                     mp_data['image_url'] = None
-                                # Add contact URL from archived data
-                name_key = mp_data['name'].strip().lower()
-                mp_data['contact_url'] = CONTACT_URL_MAP.get(name_key, None)
-                                # Add contact URL from archived data
-                name_key = mp_data['name'].strip().lower()
+                                # Add contact URL from archived data (normalize name for matching)
+                name_key = normalize_name(mp_data['name']).lower()
                 mp_data['contact_url'] = CONTACT_URL_MAP.get(name_key, None)
                 
-                # Detect gender from first name
+                # Detect gender from name
                 mp_data['gender'] = detect_gender(mp_data['name'])
                 
                 politicians.append(mp_data)
