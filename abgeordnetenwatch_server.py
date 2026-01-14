@@ -13,6 +13,53 @@ import os
 app = Flask(__name__)
 CORS(app)
 
+# Common German first names for gender detection
+MALE_NAMES = {
+    'alexander', 'andreas', 'axel', 'benjamin', 'bernd', 'christian', 'christoph', 'daniel', 
+    'david', 'dieter', 'dirk', 'felix', 'florian', 'frank', 'friedrich', 'georg', 'gerhard',
+    'hans', 'harald', 'hartmut', 'heinrich', 'helmut', 'hendrik', 'herbert', 'hermann', 'holger',
+    'jan', 'jens', 'joachim', 'johannes', 'jörg', 'josef', 'jürgen', 'kai', 'karl', 'klaus',
+    'konstantin', 'lars', 'leon', 'lukas', 'manfred', 'marc', 'marco', 'marcus', 'mario', 'mark',
+    'markus', 'martin', 'matthias', 'max', 'maximilian', 'michael', 'nico', 'niklas', 'nils',
+    'norbert', 'olaf', 'oliver', 'oskar', 'otto', 'pascal', 'patrick', 'paul', 'peter', 'philipp',
+    'rainer', 'ralf', 'rene', 'richard', 'robert', 'roland', 'rolf', 'sebastian', 'stefan',
+    'steffen', 'stephan', 'sven', 'theo', 'theodor', 'thomas', 'thorsten', 'till', 'tim', 'tobias',
+    'tom', 'torsten', 'ulrich', 'uwe', 'volker', 'walter', 'werner', 'wilfried', 'wilhelm', 'wolfgang'
+}
+
+FEMALE_NAMES = {
+    'alexandra', 'andrea', 'angela', 'angelika', 'anja', 'anke', 'anna', 'anne', 'annette',
+    'astrid', 'barbara', 'beate', 'bettina', 'birgit', 'brigitte', 'carina', 'carla', 'carmen',
+    'charlotte', 'christa', 'christiane', 'christina', 'christine', 'claudia', 'cornelia',
+    'daniela', 'diana', 'doris', 'elena', 'elisabeth', 'elke', 'emilia', 'emma', 'erika', 'eva',
+    'franziska', 'gabriele', 'gisela', 'gudrun', 'hannah', 'heide', 'heike', 'helga', 'hilde',
+    'hildegard', 'ida', 'ilse', 'ina', 'ines', 'inge', 'ingeborg', 'ingrid', 'irene', 'iris',
+    'isabel', 'isabell', 'isabelle', 'jana', 'janina', 'jasmin', 'jennifer', 'jessica', 'johanna',
+    'julia', 'juliane', 'jutta', 'karin', 'karla', 'katharina', 'kathrin', 'katja', 'katrin',
+    'kerstin', 'kirsten', 'klara', 'kristin', 'lara', 'laura', 'lea', 'lena', 'lisa', 'luise',
+    'manuela', 'margarete', 'maria', 'marie', 'marion', 'marta', 'martha', 'martina', 'melanie',
+    'michaela', 'monika', 'nadine', 'natalie', 'nicole', 'nina', 'patricia', 'petra', 'pia',
+    'regina', 'renate', 'rita', 'rosa', 'rosemarie', 'ruth', 'sabine', 'sabrina', 'sandra', 'sara',
+    'sarah', 'silke', 'simone', 'sofia', 'sophie', 'stefanie', 'susanne', 'svenja', 'tanja',
+    'teresa', 'theresa', 'ulrike', 'ursula', 'ute', 'vanessa', 'vera', 'veronika', 'waltraud'
+}
+
+def detect_gender(full_name):
+    """Detect gender from first name using common German names"""
+    # Extract first name (assumes "First Last" format)
+    parts = full_name.strip().split()
+    if not parts:
+        return 'unknown'
+    
+    first_name = parts[0].lower()
+    
+    if first_name in MALE_NAMES:
+        return 'male'
+    elif first_name in FEMALE_NAMES:
+        return 'female'
+    else:
+        return 'unknown'
+
 # Load contact URLs from CSV database
 CONTACT_URL_MAP = {}
 def load_contact_urls():
@@ -166,6 +213,9 @@ def scrape_abgeordnetenwatch_by_plz(plz):
                                 # Add contact URL from archived data
                 name_key = mp_data['name'].strip().lower()
                 mp_data['contact_url'] = CONTACT_URL_MAP.get(name_key, None)
+                
+                # Detect gender from first name
+                mp_data['gender'] = detect_gender(mp_data['name'])
                 
                 politicians.append(mp_data)
                 print(f"✓ {mp_data['name']} ({mp_data['party']})")

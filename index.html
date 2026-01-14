@@ -205,9 +205,8 @@
                 data.members.forEach(member => {
                     const imageUrl = member.image_url || 'https://via.placeholder.com/120?text=Kein+Bild';
                     const mpNameEscaped = member.name.replace(/'/g, "\\'");
-                    const genderEscaped = (member.gender || 'unknown').replace(/'/g, "\\'");
                     const contactButton = member.contact_url 
-                        ? `<button onclick="showEmailModal('${member.contact_url}', '${mpNameEscaped}', '${genderEscaped}')" class="contact-link" style="margin-top: 10px; display: inline-block; background: #667eea; color: white; padding: 8px 16px; border-radius: 5px; font-weight: bold; border: none; cursor: pointer;">✉️ Kontakt aufnehmen</button>`
+                        ? `<button onclick="showEmailModal('${member.contact_url}', '${mpNameEscaped}')" class="contact-link" style="margin-top: 10px; display: inline-block; background: #667eea; color: white; padding: 8px 16px; border-radius: 5px; font-weight: bold; border: none; cursor: pointer;">✉️ Kontakt aufnehmen</button>`
                         : `<div style="margin-top: 10px; color: #999; font-size: 0.9em;">⚠️ Kontakt-URL nicht verfügbar</div>`;
                     html += `
                         <div class="member-card" style="display: flex; align-items: center; gap: 20px; text-align: left;">
@@ -260,7 +259,7 @@
         });
         
         // Email template from README (German version)
-        const emailTemplateGerman = `[SALUTATION],
+        const emailTemplateGerman = `Sehr geehrte/r [Herr/Frau] [Nachname],
 
 als Bürgerin/Bürger Ihres Wahlkreises wende ich mich heute an Sie, um Sie an die Resolution des Deutschen Bundestags vom 21. November 2024 zur „Solidarität mit den Menschen in Iran" zu erinnern.
 
@@ -280,26 +279,13 @@ Mit freundlichen Grüßen,
         
         let currentContactUrl = '';
         
-        function showEmailModal(contactUrl, mpName, gender) {
+        function showEmailModal(contactUrl, mpName) {
             currentContactUrl = contactUrl;
             const modal = document.getElementById('emailModal');
             const textarea = document.getElementById('emailTemplate');
             
-            // Get last name
-            const lastName = mpName.split(' ').pop();
-            
-            // Create gender-aware salutation
-            let salutation;
-            if (gender === 'male') {
-                salutation = `Sehr geehrter Herr ${lastName}`;
-            } else if (gender === 'female') {
-                salutation = `Sehr geehrte Frau ${lastName}`;
-            } else {
-                salutation = 'Sehr geehrtes Mitglied des Deutschen Bundestages';
-            }
-            
-            // Replace placeholder with personalized salutation
-            let personalizedTemplate = emailTemplateGerman.replace('[SALUTATION]', salutation);
+            // Replace [Nachname] with MP last name
+            let personalizedTemplate = emailTemplateGerman.replace('[Nachname]', mpName.split(' ').pop());
             textarea.value = personalizedTemplate;
             
             modal.style.display = 'block';
