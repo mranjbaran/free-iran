@@ -1,0 +1,25 @@
+1043506,Badum, Lisa,235
+1043648,Benner, Lukas,086
+1043938,Castellucci, Prof. Dr. Lars,277
+1044222,Esdar, Dr. Wiebke,131
+1044246,Fahl, Dr. Fabian,086
+1044508,Gläser, Ronald,075
+1044590,Grasse, Adrian,078
+1044778,Haßelmann, Britta,131
+1045428,Klingbeil, Lars,035
+1045438,Klose, Annika,074
+1045450,Kneller, Maximilian,131
+1045490,Köhler, Achim,277
+1045736,Laschet, Armin,086
+1045826,Limburg, Helge,046
+1046072,Merendino, Stella,074
+1046116,Middelberg, Dr. Mathias,039
+1046720,Reichinnek, Heidi,039
+1047200,Schneider, Julia,075
+1047252,Schraps, Johannes,046
+1047346,Schwarz, Andreas,235
+1049236,Silberhorn, Thomas,235
+1047564,Steinmüller, Hanna,074
+1047638,Stüwe, Ruppert,078
+1047674,Tauschwitz, Vivian,035
+1048238,Wulf, Mareike Lotte,046

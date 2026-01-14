@@ -1,0 +1,227 @@
+[
+  {
+    "name": "Middelberg, Dr. Mathias",
+    "mdbId": "1046116",
+    "fraktion": "CDU/CSU",
+    "wahlkreis_number": "039",
+    "wahlkreis_name": "Stadt Osnabrück",
+    "cities": "Osnabrück, Stadt, Osnabrück, Belm, Georgsmarienhütte, Stadt, Hagen am Teutoburger Wald",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1046116"
+  },
+  {
+    "name": "Reichinnek, Heidi",
+    "mdbId": "1046720",
+    "fraktion": "Die Linke",
+    "wahlkreis_number": "039",
+    "wahlkreis_name": "Stadt Osnabrück",
+    "cities": "Osnabrück, Stadt, Osnabrück, Belm, Georgsmarienhütte, Stadt, Hagen am Teutoburger Wald",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1046720"
+  },
+  {
+    "name": "Castellucci, Prof. Dr. Lars",
+    "mdbId": "1043938",
+    "fraktion": "SPD",
+    "wahlkreis_number": "277",
+    "wahlkreis_name": "Rhein-Neckar",
+    "cities": "Rhein-Neckar-Kreis, Leimen, Stadt, Nußloch, Sandhausen, Walldorf, Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1043938"
+  },
+  {
+    "name": "Köhler, Achim",
+    "mdbId": "1045490",
+    "fraktion": "AfD",
+    "wahlkreis_number": "277",
+    "wahlkreis_name": "Rhein-Neckar",
+    "cities": "Rhein-Neckar-Kreis, Leimen, Stadt, Nußloch, Sandhausen, Walldorf, Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1045490"
+  },
+  {
+    "name": "Esdar, Dr. Wiebke",
+    "mdbId": "1044222",
+    "fraktion": "SPD",
+    "wahlkreis_number": "131",
+    "wahlkreis_name": "Bielefeld – Gütersloh II",
+    "cities": "Bielefeld, Stadt, Gütersloh, Werther (Westf.), Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1044222"
+  },
+  {
+    "name": "Haßelmann, Britta",
+    "mdbId": "1044778",
+    "fraktion": "Bündnis 90/Die Grünen",
+    "wahlkreis_number": "131",
+    "wahlkreis_name": "Bielefeld – Gütersloh II",
+    "cities": "Bielefeld, Stadt, Gütersloh, Werther (Westf.), Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1044778"
+  },
+  {
+    "name": "Kneller, Maximilian",
+    "mdbId": "1045450",
+    "fraktion": "AfD",
+    "wahlkreis_number": "131",
+    "wahlkreis_name": "Bielefeld – Gütersloh II",
+    "cities": "Bielefeld, Stadt, Gütersloh, Werther (Westf.), Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1045450"
+  },
+  {
+    "name": "Klingbeil, Lars",
+    "mdbId": "1045428",
+    "fraktion": "SPD",
+    "wahlkreis_number": "035",
+    "wahlkreis_name": "Rotenburg I – Heidekreis",
+    "cities": "Rotenburg (Wümme), Rotenburg (Wümme), Stadt, Scheeßel, Visselhövede, Stadt, Bothel",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1045428"
+  },
+  {
+    "name": "Tauschwitz, Vivian",
+    "mdbId": "1047674",
+    "fraktion": "CDU/CSU",
+    "wahlkreis_number": "035",
+    "wahlkreis_name": "Rotenburg I – Heidekreis",
+    "cities": "Rotenburg (Wümme), Rotenburg (Wümme), Stadt, Scheeßel, Visselhövede, Stadt, Bothel",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1047674"
+  },
+  {
+    "name": "Schraps, Johannes",
+    "mdbId": "1047252",
+    "fraktion": "SPD",
+    "wahlkreis_number": "046",
+    "wahlkreis_name": "Hameln-Pyrmont – Holzminden",
+    "cities": "Northeim, Bodenfelde, Flecken, Uslar, Stadt, Solling (Landkreis Northeim), gemfr. Geb., Hameln-Pyrmont",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1047252"
+  },
+  {
+    "name": "Limburg, Helge",
+    "mdbId": "1045826",
+    "fraktion": "Bündnis 90/Die Grünen",
+    "wahlkreis_number": "046",
+    "wahlkreis_name": "Hameln-Pyrmont – Holzminden",
+    "cities": "Northeim, Bodenfelde, Flecken, Uslar, Stadt, Solling (Landkreis Northeim), gemfr. Geb., Hameln-Pyrmont",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1045826"
+  },
+  {
+    "name": "Wulf, Mareike Lotte",
+    "mdbId": "1048238",
+    "fraktion": "CDU/CSU",
+    "wahlkreis_number": "046",
+    "wahlkreis_name": "Hameln-Pyrmont – Holzminden",
+    "cities": "Northeim, Bodenfelde, Flecken, Uslar, Stadt, Solling (Landkreis Northeim), gemfr. Geb., Hameln-Pyrmont",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1048238"
+  },
+  {
+    "name": "Steinmüller, Hanna",
+    "mdbId": "1047564",
+    "fraktion": "Bündnis 90/Die Grünen",
+    "wahlkreis_number": "074",
+    "wahlkreis_name": "Berlin-Mitte",
+    "cities": "Berlin, Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1047564"
+  },
+  {
+    "name": "Klose, Annika",
+    "mdbId": "1045438",
+    "fraktion": "SPD",
+    "wahlkreis_number": "074",
+    "wahlkreis_name": "Berlin-Mitte",
+    "cities": "Berlin, Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1045438"
+  },
+  {
+    "name": "Merendino, Stella",
+    "mdbId": "1046072",
+    "fraktion": "Die Linke",
+    "wahlkreis_number": "074",
+    "wahlkreis_name": "Berlin-Mitte",
+    "cities": "Berlin, Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1046072"
+  },
+  {
+    "name": "Laschet, Armin",
+    "mdbId": "1045736",
+    "fraktion": "CDU/CSU",
+    "wahlkreis_number": "086",
+    "wahlkreis_name": "Aachen I",
+    "cities": "Städteregion Aachen, Aachen, Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1045736"
+  },
+  {
+    "name": "Benner, Lukas",
+    "mdbId": "1043648",
+    "fraktion": "Bündnis 90/Die Grünen",
+    "wahlkreis_number": "086",
+    "wahlkreis_name": "Aachen I",
+    "cities": "Städteregion Aachen, Aachen, Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1043648"
+  },
+  {
+    "name": "Fahl, Dr. Fabian",
+    "mdbId": "1044246",
+    "fraktion": "Die Linke",
+    "wahlkreis_number": "086",
+    "wahlkreis_name": "Aachen I",
+    "cities": "Städteregion Aachen, Aachen, Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1044246"
+  },
+  {
+    "name": "Schneider, Julia",
+    "mdbId": "1047200",
+    "fraktion": "Bündnis 90/Die Grünen",
+    "wahlkreis_number": "075",
+    "wahlkreis_name": "Berlin-Pankow",
+    "cities": "Berlin, Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1047200"
+  },
+  {
+    "name": "Gläser, Ronald",
+    "mdbId": "1044508",
+    "fraktion": "AfD",
+    "wahlkreis_number": "075",
+    "wahlkreis_name": "Berlin-Pankow",
+    "cities": "Berlin, Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1044508"
+  },
+  {
+    "name": "Silberhorn, Thomas",
+    "mdbId": "1049236",
+    "fraktion": "CDU/CSU",
+    "wahlkreis_number": "235",
+    "wahlkreis_name": "Bamberg",
+    "cities": "Bamberg, Bamberg, Altendorf, Buttenheim, M, Frensdorf",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1049236"
+  },
+  {
+    "name": "Badum, Lisa",
+    "mdbId": "1043506",
+    "fraktion": "",
+    "wahlkreis_number": "235",
+    "wahlkreis_name": "Bamberg",
+    "cities": "Bamberg, Bamberg, Altendorf, Buttenheim, M, Frensdorf",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1043506"
+  },
+  {
+    "name": "Schwarz, Andreas",
+    "mdbId": "1047346",
+    "fraktion": "SPD",
+    "wahlkreis_number": "235",
+    "wahlkreis_name": "Bamberg",
+    "cities": "Bamberg, Bamberg, Altendorf, Buttenheim, M, Frensdorf",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1047346"
+  },
+  {
+    "name": "Grasse, Adrian",
+    "mdbId": "1044590",
+    "fraktion": "CDU/CSU",
+    "wahlkreis_number": "078",
+    "wahlkreis_name": "Berlin-Steglitz-Zehlendorf",
+    "cities": "Berlin, Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1044590"
+  },
+  {
+    "name": "Stüwe, Ruppert",
+    "mdbId": "1047638",
+    "fraktion": "SPD",
+    "wahlkreis_number": "078",
+    "wahlkreis_name": "Berlin-Steglitz-Zehlendorf",
+    "cities": "Berlin, Stadt",
+    "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1047638"
+  }
+]

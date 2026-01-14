@@ -1,0 +1,405 @@
+{
+  "039": {
+    "number": "039",
+    "name": "Stadt Osnabrück",
+    "cities": [
+      "Osnabrück, Stadt",
+      "Osnabrück",
+      "Belm",
+      "Georgsmarienhütte, Stadt",
+      "Hagen am Teutoburger Wald",
+      "Hasbergen",
+      "Wallenhorst"
+    ],
+    "members": [
+      {
+        "name": "Middelberg, Dr. Mathias",
+        "mdbId": "1046116",
+        "fraktion": "CDU/CSU"
+      },
+      {
+        "name": "Reichinnek, Heidi",
+        "mdbId": "1046720",
+        "fraktion": "Die Linke"
+      }
+    ]
+  },
+  "277": {
+    "number": "277",
+    "name": "Rhein-Neckar",
+    "cities": [
+      "Rhein-Neckar-Kreis",
+      "Leimen, Stadt",
+      "Nußloch",
+      "Sandhausen",
+      "Walldorf, Stadt",
+      "St. Leon-Rot",
+      "Eberbach, Stadt",
+      "Schönbrunn",
+      "Eschelbronn",
+      "Mauer",
+      "Meckesheim",
+      "Spechbach",
+      "Lobbach",
+      "Bammental",
+      "Gaiberg",
+      "Neckargemünd, Stadt",
+      "Wiesenbach",
+      "Malsch",
+      "Mühlhausen",
+      "Rauenberg, Stadt",
+      "Heddesbach",
+      "Heiligkreuzsteinach",
+      "Schönau, Stadt",
+      "Wilhelmsfeld",
+      "Sinsheim, Stadt",
+      "Zuzenhausen",
+      "Angelbachtal",
+      "Epfenbach",
+      "Neckarbischofsheim, Stadt",
+      "Neidenstein",
+      "Reichartshausen",
+      "Waibstadt, Stadt",
+      "Helmstadt-Bargen",
+      "Dielheim",
+      "Wiesloch, Stadt"
+    ],
+    "members": [
+      {
+        "name": "Castellucci, Prof. Dr. Lars",
+        "mdbId": "1043938",
+        "fraktion": "SPD"
+      },
+      {
+        "name": "Köhler, Achim",
+        "mdbId": "1045490",
+        "fraktion": "AfD"
+      }
+    ]
+  },
+  "131": {
+    "number": "131",
+    "name": "Bielefeld – Gütersloh II",
+    "cities": [
+      "Bielefeld, Stadt",
+      "Gütersloh",
+      "Werther (Westf.), Stadt"
+    ],
+    "members": [
+      {
+        "name": "Esdar, Dr. Wiebke",
+        "mdbId": "1044222",
+        "fraktion": "SPD"
+      },
+      {
+        "name": "Haßelmann, Britta",
+        "mdbId": "1044778",
+        "fraktion": "Bündnis 90/Die Grünen"
+      },
+      {
+        "name": "Kneller, Maximilian",
+        "mdbId": "1045450",
+        "fraktion": "AfD"
+      }
+    ]
+  },
+  "035": {
+    "number": "035",
+    "name": "Rotenburg I – Heidekreis",
+    "cities": [
+      "Rotenburg (Wümme)",
+      "Rotenburg (Wümme), Stadt",
+      "Scheeßel",
+      "Visselhövede, Stadt",
+      "Bothel",
+      "Brockel",
+      "Hemsbünde",
+      "Hemslingen",
+      "Kirchwalsede",
+      "Westerwalsede",
+      "Fintel",
+      "Helvesiek",
+      "Lauenbrück",
+      "Stemmen",
+      "Vahlde",
+      "Ahausen",
+      "Bötersen",
+      "Hassendorf",
+      "Hellwege",
+      "Horstedt",
+      "Reeßum",
+      "Sottrum",
+      "Heidekreis",
+      "Bispingen",
+      "Bad Fallingbostel, Stadt",
+      "Munster, Stadt",
+      "Neuenkirchen",
+      "Schneverdingen, Stadt",
+      "Soltau, Stadt",
+      "Wietzendorf",
+      "Walsrode, Stadt",
+      "Ahlden (Aller), Flecken",
+      "Eickeloh",
+      "Grethem",
+      "Hademstorf",
+      "Hodenhagen",
+      "Böhme",
+      "Frankenfeld",
+      "Häuslingen",
+      "Rethem (Aller), Stadt",
+      "Buchholz (Aller)",
+      "Essel",
+      "Gilten",
+      "Lindwedel",
+      "Schwarmstedt",
+      "Osterheide, gemfr. Bezirk"
+    ],
+    "members": [
+      {
+        "name": "Klingbeil, Lars",
+        "mdbId": "1045428",
+        "fraktion": "SPD"
+      },
+      {
+        "name": "Tauschwitz, Vivian",
+        "mdbId": "1047674",
+        "fraktion": "CDU/CSU"
+      }
+    ]
+  },
+  "046": {
+    "number": "046",
+    "name": "Hameln-Pyrmont – Holzminden",
+    "cities": [
+      "Northeim",
+      "Bodenfelde, Flecken",
+      "Uslar, Stadt",
+      "Solling (Landkreis Northeim), gemfr. Geb.",
+      "Hameln-Pyrmont",
+      "Aerzen, Flecken",
+      "Bad Münder am Deister, Stadt",
+      "Bad Pyrmont, Stadt",
+      "Coppenbrügge, Flecken",
+      "Emmerthal",
+      "Hameln, Stadt",
+      "Hessisch Oldendorf, Stadt",
+      "Salzhemmendorf, Flecken",
+      "Holzminden",
+      "Delligsen, Flecken",
+      "Holzminden, Stadt",
+      "Bevern, Flecken",
+      "Golmbach",
+      "Holenberg",
+      "Negenborn",
+      "Boffzen",
+      "Derental",
+      "Fürstenberg",
+      "Lauenförde, Flecken",
+      "Bodenwerder, Münchhausenstadt",
+      "Brevörde",
+      "Halle",
+      "Hehlen",
+      "Heinsen",
+      "Heyen",
+      "Kirchbrak",
+      "Ottenstein, Flecken",
+      "Pegestorf",
+      "Polle, Flecken",
+      "Vahlbruch",
+      "Arholzen",
+      "Deensen",
+      "Dielmissen",
+      "Eimen",
+      "Eschershausen, Stadt",
+      "Heinade",
+      "Holzen",
+      "Lenne",
+      "Lüerdissen",
+      "Stadtoldendorf, Stadt",
+      "Wangelnstedt",
+      "Boffzen, gemfr. Gebiet",
+      "Eimen, gemfr. Gebiet",
+      "Eschershausen, gemfr. Gebiet",
+      "Grünenplan, gemfr. Gebiet",
+      "Holzminden, gemfr. Gebiet",
+      "Merxhausen, gemfr. Gebiet",
+      "Wenzen, gemfr. Gebiet"
+    ],
+    "members": [
+      {
+        "name": "Schraps, Johannes",
+        "mdbId": "1047252",
+        "fraktion": "SPD"
+      },
+      {
+        "name": "Limburg, Helge",
+        "mdbId": "1045826",
+        "fraktion": "Bündnis 90/Die Grünen"
+      },
+      {
+        "name": "Wulf, Mareike Lotte",
+        "mdbId": "1048238",
+        "fraktion": "CDU/CSU"
+      }
+    ]
+  },
+  "074": {
+    "number": "074",
+    "name": "Berlin-Mitte",
+    "cities": [
+      "Berlin, Stadt"
+    ],
+    "members": [
+      {
+        "name": "Steinmüller, Hanna",
+        "mdbId": "1047564",
+        "fraktion": "Bündnis 90/Die Grünen"
+      },
+      {
+        "name": "Klose, Annika",
+        "mdbId": "1045438",
+        "fraktion": "SPD"
+      },
+      {
+        "name": "Merendino, Stella",
+        "mdbId": "1046072",
+        "fraktion": "Die Linke"
+      }
+    ]
+  },
+  "086": {
+    "number": "086",
+    "name": "Aachen I",
+    "cities": [
+      "Städteregion Aachen",
+      "Aachen, Stadt"
+    ],
+    "members": [
+      {
+        "name": "Laschet, Armin",
+        "mdbId": "1045736",
+        "fraktion": "CDU/CSU"
+      },
+      {
+        "name": "Benner, Lukas",
+        "mdbId": "1043648",
+        "fraktion": "Bündnis 90/Die Grünen"
+      },
+      {
+        "name": "Fahl, Dr. Fabian",
+        "mdbId": "1044246",
+        "fraktion": "Die Linke"
+      }
+    ]
+  },
+  "075": {
+    "number": "075",
+    "name": "Berlin-Pankow",
+    "cities": [
+      "Berlin, Stadt"
+    ],
+    "members": [
+      {
+        "name": "Schneider, Julia",
+        "mdbId": "1047200",
+        "fraktion": "Bündnis 90/Die Grünen"
+      },
+      {
+        "name": "Gläser, Ronald",
+        "mdbId": "1044508",
+        "fraktion": "AfD"
+      }
+    ]
+  },
+  "235": {
+    "number": "235",
+    "name": "Bamberg",
+    "cities": [
+      "Bamberg",
+      "Bamberg",
+      "Altendorf",
+      "Buttenheim, M",
+      "Frensdorf",
+      "Hallstadt, St",
+      "Hirschaid, M",
+      "Pettstadt",
+      "Pommersfelden",
+      "Stegaurach",
+      "Strullendorf",
+      "Walsdorf",
+      "Schlüsselfeld, St",
+      "Burgwindheim, M",
+      "Ebrach, M",
+      "Burgebrach, M",
+      "Schönbrunn i.Steigerwald",
+      "Lisberg",
+      "Priesendorf",
+      "Ebracher Forst",
+      "Eichwald",
+      "Geisberger Forst",
+      "Hauptsmoor",
+      "Koppenwinder Forst",
+      "Lindach",
+      "Semberg",
+      "Steinachsrangen",
+      "Winkelhofer Forst",
+      "Zückshuter Forst",
+      "Forchheim",
+      "Eggolsheim, M",
+      "Forchheim, GKSt",
+      "Hallerndorf",
+      "Hausen",
+      "Heroldsbach",
+      "Igensdorf, M",
+      "Langensendelbach",
+      "Neunkirchen a.Brand, M",
+      "Kunreuth",
+      "Pinzberg",
+      "Wiesenthau",
+      "Kirchehrenbach",
+      "Leutenbach",
+      "Weilersbach",
+      "Effeltrich",
+      "Poxdorf",
+      "Dormitz",
+      "Hetzles",
+      "Kleinsendelbach"
+    ],
+    "members": [
+      {
+        "name": "Silberhorn, Thomas",
+        "mdbId": "1049236",
+        "fraktion": "CDU/CSU"
+      },
+      {
+        "name": "Badum, Lisa",
+        "mdbId": "1043506",
+        "fraktion": "Bündnis 90/Die Grünen"
+      },
+      {
+        "name": "Schwarz, Andreas",
+        "mdbId": "1047346",
+        "fraktion": "SPD"
+      }
+    ]
+  },
+  "078": {
+    "number": "078",
+    "name": "Berlin-Steglitz-Zehlendorf",
+    "cities": [
+      "Berlin, Stadt"
+    ],
+    "members": [
+      {
+        "name": "Grasse, Adrian",
+        "mdbId": "1044590",
+        "fraktion": "CDU/CSU"
+      },
+      {
+        "name": "Stüwe, Ruppert",
+        "mdbId": "1047638",
+        "fraktion": "SPD"
+      }
+    ]
+  }
+}

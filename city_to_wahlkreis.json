@@ -1,0 +1,1179 @@
+{
+  "köln": [
+    "092",
+    "094",
+    "100",
+    "093"
+  ],
+  "elbe-elster": [
+    "065"
+  ],
+  "oberspreewald-lausitz": [
+    "065"
+  ],
+  "bremen": [
+    "054",
+    "055"
+  ],
+  "börde": [
+    "067"
+  ],
+  "salzlandkreis": [
+    "067"
+  ],
+  "stadt": [
+    "041",
+    "042",
+    "039"
+  ],
+  "hannover": [
+    "041",
+    "042"
+  ],
+  "mannheim": [
+    "275"
+  ],
+  "offenbach": [
+    "184"
+  ],
+  "schwerin": [
+    "012"
+  ],
+  "ludwigslust-parchim": [
+    "012",
+    "013"
+  ],
+  "nordwestmecklenburg": [
+    "012",
+    "013"
+  ],
+  "oldenburg": [
+    "027"
+  ],
+  "ammerland": [
+    "027"
+  ],
+  "main-taunus": [
+    "180"
+  ],
+  "mecklenburgische": [
+    "016",
+    "017"
+  ],
+  "seenplatte": [
+    "016",
+    "017"
+  ],
+  "vorpommern-greifswald": [
+    "016",
+    "015"
+  ],
+  "kiel": [
+    "005"
+  ],
+  "homburg": [
+    "299"
+  ],
+  "rastatt": [
+    "273"
+  ],
+  "rheingau-taunus": [
+    "177"
+  ],
+  "limburg": [
+    "177"
+  ],
+  "salzgitter": [
+    "049"
+  ],
+  "wolfenbüttel": [
+    "049"
+  ],
+  "hagen": [
+    "137"
+  ],
+  "ennepe-ruhr-kreis": [
+    "137",
+    "138"
+  ],
+  "berlin-neukölln": [
+    "081"
+  ],
+  "ansbach": [
+    "240"
+  ],
+  "regensburg": [
+    "232"
+  ],
+  "harburg": [
+    "036",
+    "023"
+  ],
+  "mittelsachsen": [
+    "160"
+  ],
+  "bamberg": [
+    "235"
+  ],
+  "potsdam": [
+    "061"
+  ],
+  "potsdam-mittelmark": [
+    "061",
+    "060"
+  ],
+  "teltow-fläming": [
+    "061",
+    "060",
+    "062"
+  ],
+  "mainz": [
+    "204"
+  ],
+  "wesel": [
+    "112",
+    "113",
+    "116"
+  ],
+  "duisburg": [
+    "115",
+    "114"
+  ],
+  "zollernalb": [
+    "295"
+  ],
+  "sigmaringen": [
+    "295"
+  ],
+  "marburg": [
+    "170"
+  ],
+  "rostock": [
+    "014",
+    "014",
+    "013",
+    "017"
+  ],
+  "landkreis": [
+    "014",
+    "013",
+    "017"
+  ],
+  "karlsruhe-stadt": [
+    "271"
+  ],
+  "harz": [
+    "068"
+  ],
+  "hamburg-altona": [
+    "019"
+  ],
+  "rottal-inn": [
+    "229"
+  ],
+  "hamburg-nord": [
+    "021"
+  ],
+  "saarlouis": [
+    "297"
+  ],
+  "gießen": [
+    "172"
+  ],
+  "soest": [
+    "145"
+  ],
+  "aachen": [
+    "086",
+    "087"
+  ],
+  "segeberg": [
+    "008"
+  ],
+  "stormarn-mitte": [
+    "008"
+  ],
+  "kassel": [
+    "167"
+  ],
+  "flensburg": [
+    "001"
+  ],
+  "schleswig": [
+    "001"
+  ],
+  "mettmann": [
+    "104",
+    "103"
+  ],
+  "böblingen": [
+    "260"
+  ],
+  "ludwigsburg": [
+    "265"
+  ],
+  "pirmasens": [
+    "209"
+  ],
+  "traunstein": [
+    "224"
+  ],
+  "lüchow-dannenberg": [
+    "037"
+  ],
+  "lüneburg": [
+    "037"
+  ],
+  "neuwied": [
+    "196"
+  ],
+  "rottweil": [
+    "285"
+  ],
+  "tuttlingen": [
+    "285"
+  ],
+  "emmendingen": [
+    "283"
+  ],
+  "lahr": [
+    "283"
+  ],
+  "nordsachsen": [
+    "150"
+  ],
+  "nordfriesland": [
+    "002"
+  ],
+  "dithmarschen": [
+    "002",
+    "003"
+  ],
+  "nord": [
+    "002",
+    "077"
+  ],
+  "amberg": [
+    "231"
+  ],
+  "rendsburg-eckernförde": [
+    "004"
+  ],
+  "herne": [
+    "140"
+  ],
+  "bochum": [
+    "140",
+    "139"
+  ],
+  "rheinisch-bergischer": [
+    "099"
+  ],
+  "kreis": [
+    "099",
+    "098",
+    "149",
+    "148"
+  ],
+  "fulda": [
+    "173"
+  ],
+  "hannover-land": [
+    "043",
+    "047"
+  ],
+  "ingolstadt": [
+    "215"
+  ],
+  "gera": [
+    "193"
+  ],
+  "greiz": [
+    "193"
+  ],
+  "altenburger": [
+    "193"
+  ],
+  "land": [
+    "193",
+    "192",
+    "066",
+    "190"
+  ],
+  "heidelberg": [
+    "274"
+  ],
+  "cloppenburg": [
+    "032"
+  ],
+  "vechta": [
+    "032"
+  ],
+  "nienburg": [
+    "040",
+    "033"
+  ],
+  "schaumburg": [
+    "040"
+  ],
+  "gütersloh": [
+    "130",
+    "131",
+    "135"
+  ],
+  "osnabrück-land": [
+    "038"
+  ],
+  "oberbergischer": [
+    "098"
+  ],
+  "rosenheim": [
+    "221"
+  ],
+  "passau": [
+    "228"
+  ],
+  "ravensburg": [
+    "294"
+  ],
+  "mosel": [
+    "199"
+  ],
+  "rhein-hunsrück": [
+    "199"
+  ],
+  "hildesheim": [
+    "048"
+  ],
+  "bad": [
+    "247",
+    "222"
+  ],
+  "kissingen": [
+    "247"
+  ],
+  "tölz-wolfratshausen": [
+    "222"
+  ],
+  "miesbach": [
+    "222"
+  ],
+  "halle": [
+    "071"
+  ],
+  "siegen-wittgenstein": [
+    "147"
+  ],
+  "gotha": [
+    "191"
+  ],
+  "ilm-kreis": [
+    "191"
+  ],
+  "dresden": [
+    "159",
+    "158"
+  ],
+  "bautzen": [
+    "159",
+    "155"
+  ],
+  "plön": [
+    "006"
+  ],
+  "neumünster": [
+    "006"
+  ],
+  "rhein-neckar": [
+    "277"
+  ],
+  "groß-gerau": [
+    "183"
+  ],
+  "görlitz": [
+    "156"
+  ],
+  "unterems": [
+    "025"
+  ],
+  "schweinfurt": [
+    "249"
+  ],
+  "steinfurt": [
+    "127",
+    "126",
+    "123"
+  ],
+  "berlin-marzahn-hellersdorf": [
+    "084"
+  ],
+  "biberach": [
+    "292"
+  ],
+  "krefeld": [
+    "113",
+    "109"
+  ],
+  "erzgebirgskreis": [
+    "163",
+    "162"
+  ],
+  "waldeck": [
+    "166"
+  ],
+  "saarbrücken": [
+    "296"
+  ],
+  "weilheim": [
+    "225"
+  ],
+  "reutlingen": [
+    "289"
+  ],
+  "memmingen": [
+    "255"
+  ],
+  "unterallgäu": [
+    "255"
+  ],
+  "hamburg-mitte": [
+    "018"
+  ],
+  "eichsfeld": [
+    "188"
+  ],
+  "nordhausen": [
+    "188"
+  ],
+  "kyffhäuserkreis": [
+    "188"
+  ],
+  "augsburg-land": [
+    "252"
+  ],
+  "würzburg": [
+    "250"
+  ],
+  "frankfurt": [
+    "181",
+    "063",
+    "182"
+  ],
+  "main": [
+    "181",
+    "182"
+  ],
+  "rhein-sieg-kreis": [
+    "096",
+    "097"
+  ],
+  "herford": [
+    "132"
+  ],
+  "minden-lübbecke": [
+    "132",
+    "133"
+  ],
+  "schwäbisch": [
+    "268",
+    "269"
+  ],
+  "hall": [
+    "268"
+  ],
+  "hohenlohe": [
+    "268"
+  ],
+  "freising": [
+    "213"
+  ],
+  "roth": [
+    "245"
+  ],
+  "recklinghausen": [
+    "121",
+    "124",
+    "120"
+  ],
+  "brandenburg": [
+    "060"
+  ],
+  "havel": [
+    "060"
+  ],
+  "havelland": [
+    "060",
+    "058",
+    "056"
+  ],
+  "saalfeld-rudolstadt": [
+    "194"
+  ],
+  "saale-holzland-kreis": [
+    "194"
+  ],
+  "saale-orla-kreis": [
+    "194"
+  ],
+  "ulm": [
+    "291"
+  ],
+  "neu-ulm": [
+    "254"
+  ],
+  "schwandorf": [
+    "233"
+  ],
+  "deggendorf": [
+    "226"
+  ],
+  "delmenhorst": [
+    "028"
+  ],
+  "wesermarsch": [
+    "028"
+  ],
+  "oldenburg-land": [
+    "028"
+  ],
+  "bielefeld": [
+    "131"
+  ],
+  "calw": [
+    "280"
+  ],
+  "borken": [
+    "125",
+    "123"
+  ],
+  "oberhavel": [
+    "058"
+  ],
+  "bergstraße": [
+    "187"
+  ],
+  "mülheim": [
+    "117"
+  ],
+  "essen": [
+    "117",
+    "119",
+    "118"
+  ],
+  "stuttgart": [
+    "258"
+  ],
+  "bottrop": [
+    "124"
+  ],
+  "cuxhaven": [
+    "029"
+  ],
+  "stade": [
+    "029",
+    "030"
+  ],
+  "schwarzwald-baar": [
+    "286"
+  ],
+  "nürnberg-süd": [
+    "244"
+  ],
+  "prignitz": [
+    "056"
+  ],
+  "ostprignitz-ruppin": [
+    "056"
+  ],
+  "göppingen": [
+    "263"
+  ],
+  "nürtingen": [
+    "262"
+  ],
+  "chemnitz": [
+    "161"
+  ],
+  "münster": [
+    "128"
+  ],
+  "werra-meißner": [
+    "168"
+  ],
+  "hersfeld-rotenburg": [
+    "168"
+  ],
+  "südpfalz": [
+    "210"
+  ],
+  "coburg": [
+    "237"
+  ],
+  "freiburg": [
+    "281"
+  ],
+  "berlin-pankow": [
+    "075"
+  ],
+  "uckermark": [
+    "057"
+  ],
+  "barnim": [
+    "057",
+    "059"
+  ],
+  "münchen-west": [
+    "219"
+  ],
+  "mitte": [
+    "219"
+  ],
+  "viersen": [
+    "110"
+  ],
+  "neckar-zaber": [
+    "266"
+  ],
+  "berlin-steglitz-zehlendorf": [
+    "078"
+  ],
+  "ludwigshafen": [
+    "206"
+  ],
+  "frankenthal": [
+    "206"
+  ],
+  "backnang": [
+    "269"
+  ],
+  "gmünd": [
+    "269"
+  ],
+  "osterholz": [
+    "034"
+  ],
+  "verden": [
+    "034"
+  ],
+  "bruchsal": [
+    "278"
+  ],
+  "schwetzingen": [
+    "278"
+  ],
+  "berlin-treptow-köpenick": [
+    "083"
+  ],
+  "erfurt": [
+    "192"
+  ],
+  "weimar": [
+    "192"
+  ],
+  "weimarer": [
+    "192",
+    "190"
+  ],
+  "cottbus": [
+    "064"
+  ],
+  "spree-neiße": [
+    "064"
+  ],
+  "vorpommern-rügen": [
+    "015"
+  ],
+  "göttingen": [
+    "053",
+    "052"
+  ],
+  "höxter": [
+    "135"
+  ],
+  "lippe": [
+    "135",
+    "134"
+  ],
+  "ostholstein": [
+    "009"
+  ],
+  "stormarn-nord": [
+    "009"
+  ],
+  "münchen-land": [
+    "220"
+  ],
+  "hof": [
+    "238"
+  ],
+  "waiblingen": [
+    "264"
+  ],
+  "hamburg-bergedorf": [
+    "023"
+  ],
+  "braunschweig": [
+    "050"
+  ],
+  "solingen": [
+    "102"
+  ],
+  "remscheid": [
+    "102"
+  ],
+  "wuppertal": [
+    "102",
+    "101"
+  ],
+  "gifhorn": [
+    "045"
+  ],
+  "peine": [
+    "045"
+  ],
+  "ahrweiler": [
+    "197"
+  ],
+  "goslar": [
+    "052"
+  ],
+  "northeim": [
+    "052"
+  ],
+  "nürnberg-nord": [
+    "243"
+  ],
+  "dortmund": [
+    "142",
+    "141"
+  ],
+  "steinburg": [
+    "003"
+  ],
+  "süd": [
+    "003"
+  ],
+  "coesfeld": [
+    "126"
+  ],
+  "berlin-tempelhof-schöneberg": [
+    "080"
+  ],
+  "neuss": [
+    "109",
+    "107"
+  ],
+  "eisenach": [
+    "189"
+  ],
+  "wartburgkreis": [
+    "189"
+  ],
+  "unstrut-hainich-kreis": [
+    "189"
+  ],
+  "main-spessart": [
+    "248"
+  ],
+  "hamburg-wandsbek": [
+    "022"
+  ],
+  "trier": [
+    "202"
+  ],
+  "kreuznach": [
+    "200"
+  ],
+  "sächsische": [
+    "157"
+  ],
+  "schweiz-osterzgebirge": [
+    "157"
+  ],
+  "friesland": [
+    "026"
+  ],
+  "wilhelmshaven": [
+    "026"
+  ],
+  "wittmund": [
+    "026"
+  ],
+  "düsseldorf": [
+    "105",
+    "106"
+  ],
+  "helmstedt": [
+    "051"
+  ],
+  "wolfsburg": [
+    "051"
+  ],
+  "konstanz": [
+    "287"
+  ],
+  "unna": [
+    "143",
+    "144"
+  ],
+  "neustadt": [
+    "207"
+  ],
+  "speyer": [
+    "207"
+  ],
+  "aalen": [
+    "270"
+  ],
+  "heidenheim": [
+    "270"
+  ],
+  "starnberg": [
+    "223"
+  ],
+  "landsberg": [
+    "223"
+  ],
+  "lech": [
+    "223"
+  ],
+  "rhein-erft-kreis": [
+    "090",
+    "091"
+  ],
+  "berlin-spandau": [
+    "077"
+  ],
+  "charlottenburg": [
+    "077"
+  ],
+  "rotenburg": [
+    "035",
+    "030"
+  ],
+  "heidekreis": [
+    "035"
+  ],
+  "berlin-mitte": [
+    "074"
+  ],
+  "lübeck": [
+    "011"
+  ],
+  "diepholz": [
+    "033"
+  ],
+  "heilbronn": [
+    "267"
+  ],
+  "hochtaunus": [
+    "175"
+  ],
+  "wiesbaden": [
+    "178"
+  ],
+  "altmark": [
+    "066"
+  ],
+  "jerichower": [
+    "066"
+  ],
+  "dahme-spreewald": [
+    "062"
+  ],
+  "chemnitzer": [
+    "162"
+  ],
+  "umland": [
+    "162"
+  ],
+  "bayreuth": [
+    "236"
+  ],
+  "pforzheim": [
+    "279"
+  ],
+  "berlin-charlottenburg-wilmersdorf": [
+    "079"
+  ],
+  "mönchengladbach": [
+    "108"
+  ],
+  "magdeburg": [
+    "069"
+  ],
+  "pinneberg": [
+    "007"
+  ],
+  "zwickau": [
+    "164"
+  ],
+  "erlangen": [
+    "241"
+  ],
+  "donau-ries": [
+    "253"
+  ],
+  "leverkusen": [
+    "100"
+  ],
+  "leipzig": [
+    "151",
+    "152"
+  ],
+  "anhalt": [
+    "070"
+  ],
+  "dessau": [
+    "070"
+  ],
+  "wittenberg": [
+    "070"
+  ],
+  "erding": [
+    "212"
+  ],
+  "ebersberg": [
+    "212"
+  ],
+  "hameln-pyrmont": [
+    "046"
+  ],
+  "holzminden": [
+    "046"
+  ],
+  "aschaffenburg": [
+    "246"
+  ],
+  "paderborn": [
+    "136"
+  ],
+  "odenwald": [
+    "186",
+    "276"
+  ],
+  "euskirchen": [
+    "091"
+  ],
+  "märkischer": [
+    "149",
+    "148"
+  ],
+  "berlin-reinickendorf": [
+    "076"
+  ],
+  "montabaur": [
+    "203"
+  ],
+  "tauber": [
+    "276"
+  ],
+  "altötting": [
+    "211"
+  ],
+  "bodensee": [
+    "293"
+  ],
+  "mittelems": [
+    "031"
+  ],
+  "berlin-friedrichshain-kreuzberg": [
+    "082"
+  ],
+  "prenzlauer": [
+    "082"
+  ],
+  "berg": [
+    "082"
+  ],
+  "ost": [
+    "082"
+  ],
+  "hochsauerlandkreis": [
+    "146"
+  ],
+  "worms": [
+    "205"
+  ],
+  "osnabrück": [
+    "039"
+  ],
+  "kaiserslautern": [
+    "208"
+  ],
+  "gelsenkirchen": [
+    "122"
+  ],
+  "olpe": [
+    "148"
+  ],
+  "leipzig-land": [
+    "153"
+  ],
+  "herzogtum": [
+    "010"
+  ],
+  "lauenburg": [
+    "010"
+  ],
+  "stormarn-süd": [
+    "010"
+  ],
+  "heinsberg": [
+    "088"
+  ],
+  "koblenz": [
+    "198"
+  ],
+  "celle": [
+    "044"
+  ],
+  "uelzen": [
+    "044"
+  ],
+  "landshut": [
+    "227"
+  ],
+  "wetterau": [
+    "176",
+    "174"
+  ],
+  "esslingen": [
+    "261"
+  ],
+  "düren": [
+    "089"
+  ],
+  "straubing": [
+    "230"
+  ],
+  "meißen": [
+    "154"
+  ],
+  "hanau": [
+    "179"
+  ],
+  "warendorf": [
+    "129"
+  ],
+  "burgenland": [
+    "072"
+  ],
+  "saalekreis": [
+    "072"
+  ],
+  "münchen-süd": [
+    "218"
+  ],
+  "augsburg-stadt": [
+    "251"
+  ],
+  "offenburg": [
+    "284"
+  ],
+  "oberallgäu": [
+    "256"
+  ],
+  "schwalm-eder": [
+    "169"
+  ],
+  "kleve": [
+    "111"
+  ],
+  "weiden": [
+    "234"
+  ],
+  "aurich": [
+    "024"
+  ],
+  "emden": [
+    "024"
+  ],
+  "lahn-dill": [
+    "171"
+  ],
+  "bremerhaven": [
+    "055"
+  ],
+  "bitburg": [
+    "201"
+  ],
+  "waldshut": [
+    "288"
+  ],
+  "fürstenfeldbruck": [
+    "214"
+  ],
+  "hamm": [
+    "144"
+  ],
+  "jena": [
+    "190"
+  ],
+  "sömmerda": [
+    "190"
+  ],
+  "berlin-lichtenberg": [
+    "085"
+  ],
+  "märkisch-oderland": [
+    "059"
+  ],
+  "hamburg-eimsbüttel": [
+    "020"
+  ],
+  "münchen-ost": [
+    "217"
+  ],
+  "ostallgäu": [
+    "257"
+  ],
+  "bonn": [
+    "095"
+  ],
+  "suhl": [
+    "195"
+  ],
+  "schmalkalden-meiningen": [
+    "195"
+  ],
+  "hildburghausen": [
+    "195"
+  ],
+  "sonneberg": [
+    "195"
+  ],
+  "st": [
+    "298"
+  ],
+  "wendel": [
+    "298"
+  ],
+  "münchen-nord": [
+    "216"
+  ],
+  "fürth": [
+    "242"
+  ],
+  "oberhausen": [
+    "116"
+  ],
+  "vogtlandkreis": [
+    "165"
+  ],
+  "main-kinzig": [
+    "174"
+  ],
+  "schotten": [
+    "174"
+  ],
+  "kulmbach": [
+    "239"
+  ],
+  "mansfeld": [
+    "073"
+  ],
+  "karlsruhe-land": [
+    "272"
+  ]
+}
