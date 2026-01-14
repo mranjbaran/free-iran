@@ -1,303 +1,367 @@
-# 🇮🇷 PLZ-to-MP Iran Solidarity
+# 🇮🇷 Iran Solidarity - Bundestag MP Contact Tool
 
-**A civic-tech tool helping residents of Germany contact their Bundestag representatives to express solidarity with the people of Iran.**
+**A web application helping German residents contact their Bundestag representatives about human rights violations in Iran.**
 
-## 🧭 Project Mission
+## 🎯 Purpose
 
-The people of Iran continue to face brutal repression and human rights violations as they protest for freedom, equality, dignity, and fundamental rights. International solidarity — especially from democracies like Germany — plays a crucial role in keeping political pressure on the Iranian regime and supporting activists on the ground.
+This tool enables people living in Germany to:
+1. Find their Bundestag representatives by postal code (PLZ)
+2. Get personalized contact information with gender-aware salutations
+3. Send solidarity messages about the Iran human rights crisis
 
-This project helps ordinary residents in Germany express their voices to their elected representatives, urging them to:
+> *"The people of Iran continue to face brutal repression. International solidarity from democracies like Germany is crucial."*
 
-- 🗣️ Publicly acknowledge and support the Iranian people
-- ⚖️ Adopt stronger human rights and diplomatic pressure
-- 🤝 Work for humanitarian aid and international solidarity
+## 📁 Project Structure
 
-Germany's Bundestag has discussed motions on **"Solidarität mit den Menschen in Iran"** and human rights, showing that this issue is actively part of parliamentary debate.
-
-### Why This Matters
-
-Mass protests inside Iran — including those demanding women's rights under the slogan **"Frau, Leben, Freiheit" (Woman, Life, Freedom)** — have drawn broad international attention and solidarity actions across German cities. Demonstrations in Berlin and other regions show public readiness to support these movements.
-
-Germany, as a key EU partner, has influence on sanctions, diplomatic pressure, and humanitarian policy towards Iran — and **your voice can be part of that democratic input**.
-
-## ✨ Features
-
-- 🏠 **PLZ Lookup** - Enter your German postal code to find your Bundestag MPs
-- 👤 **MP Profiles** - View photos, names, parties, and constituencies
-- 📍 **100% Coverage** - All German postal codes supported via real-time scraping
-- 🔄 **Always Current** - Real-time data from abgeordnetenwatch.de
-- ✉️ **Contact Ready** - Direct links to MP profiles for advocacy outreach
-- 🗺️ **Multiple Wahlkreis** - Handles PLZ codes spanning multiple districts
+```
+free.iran/
+├── frontend/                       # React/TypeScript Application
+│   ├── components/
+│   │   ├── Hero.tsx               # Hero section with language switcher
+│   │   ├── SituationReport.tsx    # Iran crisis statistics & timeline
+│   │   ├── ActionCenter.tsx       # PLZ search & MP selection
+│   │   ├── MPList.tsx             # MP cards with email modal
+│   │   └── Footer.tsx             # Attribution footer
+│   ├── App.tsx                    # Main application
+│   ├── translations.ts            # Multi-language support (EN/DE/FA)
+│   ├── types.ts                   # TypeScript definitions
+│   ├── vite.config.ts             # Vite configuration
+│   └── package.json               # Frontend dependencies
+│
+├── data/
+│   └── bundestag_contacts.csv     # 634 MPs with contact URLs
+│
+├── static/
+│   └── index.html                 # Standalone HTML version (backup)
+│
+├── abgeordnetenwatch_server.py    # Flask API server
+├── gender_data.py                 # 1037 gender mappings
+├── requirements.txt               # Python dependencies
+└── venv/                          # Python virtual environment
+```
 
 ## 🚀 Quick Start
 
 ### Prerequisites
+- **Python 3.13+**
+- **Node.js 18+**
+- **Firefox** (for Selenium scraping)
 
-- Python 3.8 or higher
-- Firefox browser (for web scraping)
-- Git (optional, for cloning)
-
-### 1. Install Dependencies
+### Installation
 
 ```bash
-# Create virtual environment
+# 1. Navigate to project directory
+cd "C:\Users\sranjbar\OneDrive - Capgemini\Desktop\free.iran"
+
+# 2. Create Python virtual environment
 python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
 
-# Activate virtual environment
-# Windows:
-.\venv\Scripts\activate
-# Linux/Mac:
-source venv/bin/activate
-
-# Install packages
-pip install flask flask-cors selenium
+# 3. Install frontend dependencies
+cd frontend
+npm install
 ```
 
-### 2. Install Firefox
+### Running the Application
 
-The app uses Firefox for web scraping. Download from: https://www.mozilla.org/firefox/
-
-### 3. Start the Application
-
-**Terminal 1 - Backend (Flask):**
+**Terminal 1: Flask Backend (Required)**
 ```bash
+cd "C:\Users\sranjbar\OneDrive - Capgemini\Desktop\free.iran"
+venv\Scripts\activate
+python abgeordnetenwatch_server.py
+```
+✅ Backend: http://localhost:5000
+
+**Terminal 2: React Frontend**
+```bash
+cd "C:\Users\sranjbar\OneDrive - Capgemini\Desktop\free.iran\frontend"
+npm run dev
+```
+✅ Frontend: http://localhost:5173
+
+## 🛠️ Technology Stack
+
+### Frontend
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| React | 19.2.3 | UI framework |
+| TypeScript | 5.8.2 | Type safety |
+| Vite | 6.2.0 | Build tool & dev server |
+| Tailwind CSS | CDN | Styling |
+| Lucide React | 0.562.0 | Icons |
+
+### Backend
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Flask | 3.1.0 | REST API server |
+| Selenium | 4.27.1 | Web scraping |
+| Flask-CORS | 5.0.0 | Cross-origin support |
+
+### Data
+- **634 Bundestag MPs** with official contact form URLs
+- **1037 gender mappings** for personalized salutations
+- Real-time scraping from abgeordnetenwatch.de
+
+## 📡 API Documentation
+
+### `GET /api/search?plz=<postal_code>`
+Search for MPs by German postal code.
+
+**Example Request:**
+```bash
+curl http://localhost:5000/api/search?plz=10961
+```
+
+**Response Type 1: Members Found**
+```json
+{
+  "type": "members",
+  "plz": "10961",
+  "members": [
+    {
+      "name": "Angela Merkel",
+      "party": "CDU",
+      "constituency": "Berlin-Mitte",
+      "image_url": "https://www.abgeordnetenwatch.de/...",
+      "contact_url": "https://www.bundestag.de/services/formular/...",
+      "gender": "female",
+      "profile_url": "https://www.abgeordnetenwatch.de/..."
+    }
+  ]
+}
+```
+
+**Response Type 2: Multiple Electoral Districts**
+```json
+{
+  "type": "multiple_wahlkreis",
+  "plz": "28195",
+  "message": "Mehrere Wahlkreise gefunden",
+  "options": [
+    {
+      "title": "Bremen I - Bremen",
+      "url": "https://www.abgeordnetenwatch.de/bundestag/wahlkreis/bremen-i"
+    }
+  ]
+}
+```
+
+### `GET /api/scrape-url?url=<wahlkreis_url>`
+Scrape specific electoral district URL for MPs.
+
+**Example:**
+```bash
+curl "http://localhost:5000/api/scrape-url?url=https://www.abgeordnetenwatch.de/bundestag/wahlkreis/bremen-i"
+```
+
+## ✨ Features
+
+### 🌍 Multi-Language Interface
+- **English** - Interface navigation
+- **German** - Full support
+- **Farsi (فارسی)** - Persian language with RTL support
+
+**Note:** All email templates to MPs use German regardless of interface language.
+
+### 🎭 Gender-Aware Salutations
+Automatically generates appropriate German greetings:
+- **Male MPs:** `"Sehr geehrter Herr [LastName]"`
+- **Female MPs:** `"Sehr geehrte Frau [LastName]"`
+- **Unknown:** `"Sehr geehrtes Mitglied des Deutschen Bundestages"`
+
+**Detection Method:**
+1. Exact match from 634 MP database
+2. Fallback to ~210 common German first names
+3. Handles titles: Dr., Prof., Dr. med.
+
+### ⚡ Smart Features
+- ✅ Real-time MP search with **3-5 second loading indicator**
+- ✅ Profile images from abgeordnetenwatch.de
+- ✅ Direct links to **official Bundestag contact forms**
+- ✅ One-click **copy-to-clipboard** email templates
+- ✅ Party color-coded badges:
+  - SPD → Red
+  - CDU/CSU → Black
+  - Grüne → Green
+  - FDP → Yellow
+  - AfD → Blue
+  - Linke → Pink
+
+### 📧 Email Template Format
+```
+Betreff:
+Solidarität mit den Menschen im Iran – Einsatz für Menschenrechte
+////
+Nachricht:
+
+[SALUTATION],
+
+als Bürgerin/Bürger Ihres Wahlkreises wende ich mich heute an Sie...
+```
+
+**Template Focus:**
+- November 2024 Bundestag resolution
+- Human rights violations since September 2022
+- Calls for sanctions, investigations, and asylum protection
+
+## 🔒 Privacy & Security
+
+- ✅ **No data storage** - All searches are real-time
+- ✅ **No tracking** - No analytics or cookies
+- ✅ **External links only** - Direct to official forms
+- ✅ **CORS enabled** - Safe cross-origin requests
+
+## 🧪 Testing
+
+Test the application with these PLZ codes:
+
+| PLZ | Expected Result | Purpose |
+|-----|----------------|---------|
+| 10961 | Single district | Berlin - typical case |
+| 28195 | Multiple districts | Bremen - district selection |
+| 12345 | No results | Error handling |
+
+## 🐛 Troubleshooting
+
+### Backend Not Starting
+```bash
+# Check if port 5000 is in use
+netstat -ano | findstr :5000
+
+# Kill process and restart
+Get-Process -Id <PID> | Stop-Process -Force
 python abgeordnetenwatch_server.py
 ```
 
-**Terminal 2 - Frontend (HTTP Server):**
+### Frontend Not Loading
 ```bash
-python start_server.py
+# Check if port 5173 is in use
+netstat -ano | findstr :5173
+
+# Clear cache and reinstall
+cd frontend
+Remove-Item node_modules, package-lock.json -Recurse -Force
+npm install
+npm run dev
 ```
 
-### 4. Open in Browser
-
-Navigate to: **http://localhost:8000/index.html**
-
-## 📂 Project Structure
-
-```
-free.iran/
-├── data/                           # Core data files
-│   └── bundestag_contacts.csv     # MP contact URLs (634 members)
-├── static/                         # Frontend files
-│   └── index.html                 # Main user interface
-├── abgeordnetenwatch_server.py     # Flask backend (scraping API)
-├── start_server.py                 # HTTP server for static files
-├── requirements.txt                # Python dependencies
-├── TODO.md                         # Project roadmap
-├── .gitignore                      # Git exclusions
-├── archive/                        # Old implementations & test files
-│   └── README.md                  # Why files were archived
-└── README.md                       # This file
-```
-
-### Key Components
-
-**Backend (`abgeordnetenwatch_server.py`):**
-- Flask REST API on port 5000
-- Real-time web scraping with Selenium
-- Loads 634 MP contact URLs from `data/bundestag_contacts.csv`
-- Returns MP data: name, party, constituency, photo, profile URL, contact URL
-
-**Frontend (`static/index.html`):**
-- PLZ search interface
-- MP cards with photos and contact buttons
-- Email template modal for Iran solidarity messaging
-- Responsive design
-
-**Data (`data/bundestag_contacts.csv`):**
-- 634 Bundestag members with contact form URLs
-- Format: name, mdbId, fraktion, wahlkreis, contact_url
-
-## 🎯 How It Works
-
-### User Flow:
-1. 🏠 **Enter your PLZ** on the home page
-2. 🔍 **View your MPs** - The app shows your Bundestag representatives
-3. 👤 **Click an MP's profile** - Direct link to their page on abgeordnetenwatch.de
-4. ✉️ **Contact them** - Use their profile to send a respectful email expressing support for Iran solidarity
-
-### Technical Flow:
-1. User enters PLZ in the search box
-2. Flask backend launches headless Firefox browser
-3. Selenium scrapes abgeordnetenwatch.de in real-time
-4. Results displayed with photos, party, constituency, and profile links
-
-### Special Cases:
-- **Single Wahlkreis**: Shows MPs directly
-- **Multiple Wahlkreis**: Shows selection interface (e.g., PLZ 10787 has 3 options)
-- **No results**: Clear message displayed
-
-## 🔧 API Endpoints
-
-### Health Check
+### "Failed to fetch" Error
 ```bash
-GET http://localhost:5000/health
+# Ensure backend is running
+curl http://localhost:5000/api/search?plz=10961
+
+# Check Flask CORS configuration
+# abgeordnetenwatch_server.py should have:
+# CORS(app, resources={r"/api/*": {"origins": "*"}})
 ```
 
-### Search by PLZ
+### Selenium/Firefox Issues
 ```bash
-GET http://localhost:5000/api/search?plz=10961
+# Install geckodriver
+# Download from: https://github.com/mozilla/geckodriver/releases
+# Add to PATH or place in project root
 ```
 
-**Response (Single Wahlkreis):**
-```json
-{
-  "plz": "10961",
-  "type": "members",
-  "count": 1,
-  "members": [
-    {
-      "name": "Pascal Meiser",
-      "party": "Die Linke",
-      "constituency": "Berlin-Friedrichshain-Kreuzberg – Prenzlauer Berg Ost",
-      "profile_url": "https://www.abgeordnetenwatch.de/profile/...",
-      "image_url": "https://www.abgeordnetenwatch.de/sites/default/files/..."
-    }
-  ]
-}
+## 📊 Database Details
+
+### Bundestag Contacts (`data/bundestag_contacts.csv`)
+- **Format:** `"Last, First",mdbId,fraktion,wahlkreis_number,wahlkreis_name,contact_url`
+- **Records:** 634 MPs
+- **Source:** Official Bundestag member directory
+- **Updated:** January 2026
+
+### Gender Detection (`gender_data.py`)
+- **Entries:** 1037 mappings
+- **Coverage:** All 634 MPs in both name formats
+- **Format:** `GENDER_LOOKUP = {'last, first': 'gender', 'first last': 'gender'}`
+- **Accuracy:** ~95% with fallback patterns
+
+## 🎨 Design System
+
+### Color Palette
+- **Background:** `zinc-950` (dark theme)
+- **Accent:** `red-600` (solidarity color)
+- **Text:** `white` / `zinc-400` (hierarchy)
+- **Cards:** `zinc-800` / `zinc-900`
+
+### Typography
+- **Font:** Inter (Google Fonts)
+- **Weights:** 400 (regular), 600 (semibold), 700 (bold), 900 (black)
+
+### Components
+- Responsive grid layouts
+- Smooth scroll animations
+- Loading spinners
+- Modal overlays
+- Copy-to-clipboard feedback
+
+## 📦 Build & Deploy
+
+### Production Build
+```bash
+cd frontend
+npm run build
+# Output: frontend/dist/
 ```
 
-**Response (Multiple Wahlkreis):**
-```json
-{
-  "plz": "10787",
-  "type": "multiple_wahlkreis",
-  "message": "PLZ 10787 gehört zu mehreren Wahlkreisen",
-  "options": [
-    {
-      "title": "Ansbacher Straße, Bayreuther Straße, Keithstraße",
-      "url": "https://www.abgeordnetenwatch.de/bundestag/abgeordnete?..."
-    }
-  ]
-}
+### Preview Production Build
+```bash
+npm run preview
+# Runs on: http://localhost:4173
 ```
 
-## 🧪 Test PLZ Codes
-
-- **10961** - Single result (Berlin-Friedrichshain-Kreuzberg)
-- **33098** - Multiple results (Paderborn)
-- **10787** - Multiple Wahlkreis options (Berlin Tiergarten area)
-- **72213** - Multiple results (Altensteig)
-- **30163** - Multiple results (Hannover)
-
-## ⚙️ Technical Details
-
-### Backend (Flask + Selenium)
-- Headless Firefox browser
-- CSS selector-based scraping
-- CORS enabled for local development
-- 3-5 second response time per search
-
-### Frontend (HTML + Vanilla JavaScript)
-- Pure JavaScript (no frameworks)
-- Fetch API for backend communication
-- Loading spinner during scraping
-- Responsive design
-- Hover effects on cards
-
-## 🗂️ Archive
-
-Old static dataset approach moved to `archive/` folder:
-- CSV with 634 members (no images)
-- JSON with 550 verified PLZ codes
-- 88% coverage with city search fallback
-
-See [archive/README.md](archive/README.md) for details.
-
-## ⚠️ Performance Note
-
-Scraping takes **3-5 seconds per PLZ** because:
-1. Firefox browser launches (headless)
-2. Page loads from abgeordnetenwatch.de
-3. ✉️ Suggested Email Template (German)
-
-When contacting your MP through their profile page, consider using this respectful template:
-
-**Betreff:** Solidarität mit den mutigen Menschen im Iran – Menschenrechte schützen
-
-**Text:**
-```
-Sehr geehrte(r) Frau/Herr [MP_LastName],
-
-als Bürger*in Deutschlands und Bewohner*in von [Your_City] liegt mir die aktuelle 
-Lage im Iran sehr am Herzen. Viele Menschen dort protestieren friedlich für 
-Freiheit, Menschenrechte und Demokratie, doch werden sie mit brutaler Gewalt 
-und Repression konfrontiert.
-
-Ich bitte Sie, sich im Deutschen Bundestag klar für die Menschen im Iran 
-auszusprechen und sich für politische Maßnahmen zur Unterstützung und zum 
-Schutz der Zivilbevölkerung einzusetzen.
-
-Mit freundlichen Grüßen,
-[Your_Name]
+### Static HTML Alternative
+For environments without Node.js:
+```bash
+# Use static/index.html
+# Requires only Flask backend
+# No build step needed
 ```
 
-### English Version:
-**Subject:** Solidarity with the brave people of Iran – Protecting human rights
+## 🤝 Contributing
 
-**Text:**
-```
-Dear Mr./Ms. [MP_LastName],
+This is an independent solidarity project. Improvements welcome:
 
-As a resident of [Your_City] in Germany, I am deeply concerned about the current 
-situation in Iran. Many people there are peacefully protesting for freedom, human 
-rights, and democracy, but are facing brutal violence and repression.
+**Priority Areas:**
+1. 🎯 More accurate gender detection
+2. 🌍 Additional language translations
+3. ⚡ Performance optimizations
+4. 📊 Updated MP database
 
-I ask you to clearly stand up for the people of Iran in the German Bundestag 
-and advocate for political measures to support and protect the civilian population.
-
-Sincerely,
-[Your_Name]
-```
-
-## 📜 Code of Conduct
-
-This project promotes **respectful, non-violent civic engagement** with elected officials. All communication should:
-
-- ✅ Encourage constructive dialogue
-- ✅ Focus on human rights advocacy
-- ✅ Maintain respectful tone
-- ❌ Avoid insults or partisan attacks
-- ❌ Not be automated or mass-sent
-
-## 📌 Disclaimer
-
-This tool:
-- ❗ Does **not** send emails automatically
-- 📝 Provides MP information for **you** to contact them
-- 🔓 Is **not affiliated** with any political party or organization
-- 🤝 Encourages **constructive communication** on human rights issues
-- 📊 Sources public data from [abgeordnetenwatch.de](https://www.abgeordnetenwatch.de/)
-
-## 🌍 Context & Resources
-
-### Current Events:
-- [Bundestag Debate on Iran Solidarity](https://www.bundestag.de/)
-- [Human Rights Watch - Iran](https://www.hrw.org/middle-east/north-africa/iran)
-- [Amnesty International - Iran](https://www.amnesty.org/en/location/middle-east-and-north-africa/iran/)
-
-### Solidarity Organizations:
-- [HÁWAR.help](https://hawar.help/) - Emergency aid for activists
-- [FIM - Frauenrecht ist Menschenrecht](https://www.fim-frauenrecht.de/)
-- [Stop Femicide Iran](https://www.stop-femicide-iran.com/)
+**How to Contribute:**
+1. Fork the repository
+2. Create feature branch
+3. Test thoroughly
+4. Submit pull request
 
 ## 📝 License
 
-This project is for educational and civic engagement purposes. All data sourced from public sources.
+This is an independent solidarity project. Not affiliated with any political party or organization.
 
-**MIT License** - Free to use, modify, and distribute for advocacy purposes.
+**Purpose:** To support human rights advocacy and democratic participation.
 
-## 👨‍💻 Development
+## 📞 Support
 
-**Purpose:** Supporting Iran solidarity advocacy through civic tech  
-**Date:** January 2026  
-**Tech Stack:** Python, Flask, Selenium, HTML, JavaScript  
-**Motto:** "Frau, Leben, Freiheit" - Woman, Life, Freedom
-This project is for educational purposes. Data sourced from [abgeordnetenwatch.de](https://www.abgeordnetenwatch.de/).
+### Debugging Steps
+1. Check Flask server logs (Terminal 1)
+2. Check browser console (F12 → Console)
+3. Check network tab (F12 → Network)
+4. Verify both servers are running
 
-## 👨‍💻 Development
+### Common Issues
+| Issue | Solution |
+|-------|----------|
+| CORS error | Restart Flask backend |
+| 404 on API call | Check Flask is on port 5000 |
+| Images not loading | Check abgeordnetenwatch.de access |
+| Gender wrong | Update gender_data.py |
 
-**Author:** Created for finding German Bundestag representatives  
-**Date:** January 2026  
-**Tech Stack:** Python, Flask, Selenium, HTML, JavaScript
+---
+
+**Project Status:** ✅ Production Ready  
+**Last Updated:** January 14, 2026  
+**Frontend:** http://localhost:5173  
+**Backend:** http://localhost:5000  
+
+**Made with ❤️ for human rights and democracy**

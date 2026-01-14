@@ -321,6 +321,110 @@ def search_plz():
         return jsonify({'error': str(e)}), 500
 
 
+@app.route('/api/scrape-url', methods=['GET'])
+def scrape_url():
+    """
+    API endpoint to scrape MPs from a specific Wahlkreis URL
+    """
+    url = request.args.get('url', '').strip()
+    
+    if not url:
+        return jsonify({'error': 'URL parameter is required'}), 400
+    
+    if not url.startswith('https://www.abgeordnetenwatch.de'):
+        return jsonify({'error': 'Invalid URL - must be from abgeordnetenwatch.de'}), 400
+    
+    try:
+        print(f"Scraping URL: {url}")
+        
+        # Setup Firefox with headless mode
+        firefox_options = Options()
+        firefox_options.add_argument('--headless')
+        driver = webdriver.Firefox(options=firefox_options)
+        
+        try:
+            driver.get(url)
+            time.sleep(3)
+            
+            # Find all politician tiles
+            politician_elements = driver.find_elements(By.CSS_SELECTOR, "article.tile--politician")
+            print(f"Found {len(politician_elements)} politicians")
+            
+            politicians = []
+            
+            for element in politician_elements:
+                try:
+                    mp_data = {}
+                    
+                    # Find name
+                    try:
+                        name_div = element.find_element(By.CSS_SELECTOR, ".tile__politician__name")
+                        mp_data['name'] = name_div.text.strip()
+                    except:
+                        continue
+                    
+                    # Find profile URL
+                    try:
+                        profile_link = element.find_element(By.CSS_SELECTOR, "a[href*='/profile/']")
+                        href = profile_link.get_attribute('href')
+                        if href.startswith('/'):
+                            mp_data['profile_url'] = "https://www.abgeordnetenwatch.de" + href
+                        else:
+                            mp_data['profile_url'] = href
+                    except:
+                        mp_data['profile_url'] = None
+                    
+                    # Find party
+                    try:
+                        party_element = element.find_element(By.CSS_SELECTOR, ".tile__politician__party")
+                        mp_data['party'] = party_element.text.strip()
+                    except:
+                        mp_data['party'] = 'Unknown'
+                    
+                    # Find constituency
+                    try:
+                        constituency_element = element.find_element(By.CSS_SELECTOR, ".politician-tile__candidacy-mandate-constituency")
+                        mp_data['constituency'] = constituency_element.text.strip()
+                    except:
+                        mp_data['constituency'] = 'N/A'
+                    
+                    # Find image
+                    try:
+                        img_element = element.find_element(By.CSS_SELECTOR, ".tile__politician__image img")
+                        src = img_element.get_attribute('src')
+                        if src.startswith('/'):
+                            mp_data['image_url'] = "https://www.abgeordnetenwatch.de" + src
+                        else:
+                            mp_data['image_url'] = src
+                    except:
+                        mp_data['image_url'] = None
+                    
+                    # Add contact URL and gender
+                    name_key = normalize_name(mp_data['name']).lower()
+                    mp_data['contact_url'] = CONTACT_URL_MAP.get(name_key, None)
+                    mp_data['gender'] = detect_gender(mp_data['name'])
+                    
+                    politicians.append(mp_data)
+                    print(f"✓ {mp_data['name']} ({mp_data['party']})")
+                
+                except Exception as e:
+                    print(f"Error extracting politician: {e}")
+                    continue
+            
+            return jsonify({
+                'type': 'members',
+                'count': len(politicians),
+                'members': politicians
+            })
+        
+        finally:
+            driver.quit()
+    
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
 @app.route('/health', methods=['GET'])
 def health():
     """Health check endpoint"""

@@ -3,264 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bundestag Abgeordnete Finder</title>
+    <title>Solidarität mit Iran - Bundestag Kontakt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
-        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); padding: 40px; }
-        h1 { color: #333; text-align: center; margin-bottom: 10px; font-size: 2.5em; }
-        .subtitle { text-align: center; color: #666; margin-bottom: 40px; font-size: 1.1em; }
-        .search-input { width: 100%; padding: 15px 20px; font-size: 18px; border: 2px solid #ddd; border-radius: 10px; margin-bottom: 20px; }
-        .search-input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
-        .info-box { background: #f8f9fa; border-left: 4px solid #667eea; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
-        .stats { background: #667eea; color: white; padding: 20px; border-radius: 10px; margin-bottom: 30px; text-align: center; display: none; }
-        .stats-number { font-size: 3em; font-weight: bold; display: block; }
-        .wahlkreis-section { margin-bottom: 40px; border: 2px solid #e0e0e0; border-radius: 10px; padding: 20px; background: #fafafa; }
-        .wahlkreis-title { color: #667eea; font-size: 1.5em; margin-bottom: 15px; font-weight: bold; }
-        .member-card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .member-name { font-size: 1.3em; color: #333; margin-bottom: 8px; font-weight: 600; }
-        .member-party { display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9em; margin-bottom: 10px; }
-        .party-spd { background: #E3000F; color: white; }
-        .party-cdu { background: #000000; color: white; }
-        .party-grune { background: #64A12D; color: white; }
-        .party-fdp { background: #FFED00; color: #000; }
-        .party-afd { background: #009EE0; color: white; }
-        .party-linke { background: #BE3075; color: white; }
-        .party-other { background: #888; color: white; }
-        .contact-link { display: inline-block; margin-top: 10px; padding: 8px 20px; background: #667eea; color: white; text-decoration: none; border-radius: 5px; }
-        .contact-link:hover { background: #5568d3; }
-        .no-results { text-align: center; padding: 40px; color: #666; font-size: 1.2em; }
+        body { font-family: 'Inter', sans-serif; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .animate-spin { animation: spin 1s linear infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); } 50% { transform: translateY(0); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); } }
+        .animate-bounce { animation: bounce 1s infinite; }
     </style>
 </head>
-<body>
-    <!-- Email Template Modal -->
-    <div id="emailModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; overflow: auto;">
-        <div style="background: white; max-width: 700px; margin: 50px auto; padding: 30px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-            <h2 style="margin-top: 0; color: #667eea;">📧 E-Mail Vorlage für Iran-Solidarität</h2>
-            <p style="color: #666; margin-bottom: 20px;"><strong>Anleitung:</strong></p>
-            <ol style="color: #666; margin-bottom: 20px; line-height: 1.8;">
-                <li><strong>Bearbeiten Sie die Nachricht</strong> nach Bedarf (Sie können den Text ändern)</li>
-                <li><strong>Klicken Sie auf "Nachricht kopieren"</strong> um die Nachricht in die Zwischenablage zu kopieren</li>
-                <li><strong>Klicken Sie auf "Zum Kontaktformular"</strong> um das Bundestag-Formular zu öffnen</li>
-                <li><strong>Fügen Sie die Nachricht</strong> im Feld "Nachricht" ein (Strg+V)</li>
-            </ol>
-            
-            <div style="background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 5px; padding: 15px; margin-bottom: 20px;">
-                <textarea id="emailTemplate" style="width: 100%; min-height: 300px; border: none; background: transparent; font-family: Arial, sans-serif; font-size: 14px; resize: vertical;"></textarea>
+<body class="bg-zinc-950 text-white">
+    <!-- Email Modal -->
+    <div id="emailModal" class="hidden fixed inset-0 bg-black/70 z-50 overflow-auto">
+        <div class="bg-zinc-900 max-w-3xl mx-auto mt-20 mb-20 rounded-2xl shadow-2xl border border-zinc-800">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 class="text-3xl font-black text-white">✉️ E-Mail Vorlage für Iran-Solidarität</h2>
+                    <button onclick="closeEmailModal()" class="text-zinc-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                
+                <div class="bg-red-600/10 border border-red-600/30 rounded-lg p-4 mb-6">
+                    <h3 class="font-bold text-red-400 mb-2">📋 Anleitung:</h3>
+                    <ol class="text-sm text-zinc-300 space-y-2">
+                        <li><strong>1.</strong> Bearbeiten Sie die Nachricht nach Bedarf</li>
+                        <li><strong>2.</strong> Klicken Sie auf "Nachricht kopieren"</li>
+                        <li><strong>3.</strong> Klicken Sie auf "Zum Kontaktformular"</li>
+                        <li><strong>4.</strong> Fügen Sie die Nachricht im Bundestag-Formular ein (Strg+V)</li>
+                    </ol>
+                </div>
+                
+                <div class="bg-zinc-800 rounded-lg border border-zinc-700 p-4 mb-6">
+                    <textarea id="emailTemplate" class="w-full min-h-[350px] bg-transparent text-zinc-100 font-mono text-sm resize-y border-none outline-none"></textarea>
+                </div>
+                
+                <div class="flex gap-3">
+                    <button onclick="copyEmailTemplate()" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg">
+                        📋 1. Nachricht kopieren
+                    </button>
+                    <button onclick="openContactForm()" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg">
+                        ✉️ 2. Zum Kontaktformular
+                    </button>
+                </div>
+                
+                <p id="copyStatus" class="hidden mt-4 text-center text-green-400 font-bold">✓ In Zwischenablage kopiert!</p>
             </div>
-            
-            <div style="display: flex; gap: 10px; justify-content: space-between;">
-                <button onclick="copyEmailTemplate()" style="flex: 1; background: #48bb78; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px;">📋 1. Nachricht kopieren</button>
-                <button onclick="openContactForm()" style="flex: 1; background: #667eea; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px;">✉️ 2. Zum Kontaktformular</button>
-                <button onclick="closeEmailModal()" style="background: #e53e3e; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-weight: bold;">✕</button>
-            </div>
-            
-            <p id="copyStatus" style="margin-top: 15px; text-align: center; color: #48bb78; font-weight: bold; display: none;">✓ In Zwischenablage kopiert! Klicken Sie jetzt auf "Zum Kontaktformular"</p>
         </div>
     </div>
-    
-    <div class="container">
-        <h1>🏛️ Bundestag Abgeordnete Finder</h1>
-        <p class="subtitle">Finden Sie Ihre Abgeordneten nach PLZ</p>
-        
-        <div style="display: flex; gap: 10px;">
-            <input type="text" class="search-input" id="searchInput" placeholder="PLZ eingeben (z.B. 10961, 33098, 72213)..." maxlength="5" autofocus style="flex: 1;">
-            <button onclick="search()" style="padding: 15px 40px; font-size: 18px; background: #667eea; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold;">🔍 Suchen</button>
+
+    <!-- Hero Section -->
+    <div class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <div class="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-red-600 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-red-800 rounded-full blur-[100px]"></div>
         </div>
-        
-        <div class="info-box" id="infoBox">
-            <strong>💡 Lade Daten...</strong>
+
+        <div class="relative z-10 max-w-4xl mx-auto text-center space-y-8">
+            <div class="inline-flex items-center space-x-2 bg-red-600/20 border border-red-600/50 rounded-full px-4 py-1.5 text-red-400 font-medium animate-pulse">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                <span class="text-sm uppercase tracking-wider">Dringende Aktion</span>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-black tracking-tighter leading-tight">
+                SOLIDARITÄT MIT <span class="text-red-600">IRAN</span>
+            </h1>
+
+            <p class="text-xl md:text-2xl text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+                Kontaktieren Sie Ihre Bundestagsabgeordneten und fordern Sie Maßnahmen für die Menschenrechte im Iran
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <button onclick="scrollToSearch()" class="w-full sm:w-auto px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold text-lg rounded-lg transition-all shadow-[0_0_20px_rgba(220,38,38,0.5)] transform hover:scale-105">
+                    🔍 Abgeordnete finden
+                </button>
+            </div>
         </div>
-        
-        <div id="stats" class="stats">
-            <span class="stats-number" id="memberCount">0</span>
-            Abgeordnete gefunden
-        </div>
-        
-        <div id="results"></div>
+
+        <button onclick="scrollToSearch()" class="absolute bottom-10 left-1/2 -translate-x-1/2 text-zinc-500 hover:text-white transition-colors animate-bounce">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
     </div>
-    
+
+    <!-- Search Section -->
+    <section id="search-section" class="py-20 bg-white text-zinc-900">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-12">
+                <div class="flex justify-center mb-4">
+                    <div class="flex rounded overflow-hidden shadow-sm border border-zinc-200 h-6 w-9">
+                        <div class="bg-black flex-1"></div>
+                        <div class="bg-red-600 flex-1"></div>
+                        <div class="bg-yellow-400 flex-1"></div>
+                    </div>
+                </div>
+                <h2 class="text-4xl font-black mb-4">Finden Sie Ihre Abgeordneten</h2>
+                <p class="text-xl text-zinc-600 max-w-2xl mx-auto">
+                    Geben Sie Ihre Postleitzahl ein, um Ihre Bundestagsabgeordneten zu finden
+                </p>
+            </div>
+
+            <!-- Search Box -->
+            <div class="bg-zinc-50 rounded-2xl shadow-xl p-8 border border-zinc-200 mb-8">
+                <div class="flex gap-3">
+                    <input type="text" id="searchInput" placeholder="PLZ eingeben (z.B. 10961)" maxlength="5" 
+                        class="flex-1 p-4 border border-zinc-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none text-lg"
+                        onkeypress="if(event.key==='Enter') search()">
+                    <button onclick="search()" class="bg-zinc-900 hover:bg-zinc-800 text-white px-8 py-4 rounded-lg font-bold transition-all shadow-lg">
+                        🔍 Suchen
+                    </button>
+                </div>
+                <p class="text-sm text-zinc-500 mt-3">Beispiel: 28195 (Bremen), 10961 (Berlin), 80331 (München)</p>
+            </div>
+
+            <!-- Info Box -->
+            <div id="infoBox" class="bg-zinc-100 border-l-4 border-zinc-400 p-4 rounded-lg mb-6 text-sm">
+                <strong>💡 Lade Daten...</strong>
+            </div>
+
+            <!-- Stats -->
+            <div id="stats" class="hidden bg-gradient-to-r from-red-600 to-red-800 text-white p-8 rounded-2xl text-center mb-8 shadow-xl">
+                <span id="memberCount" class="text-5xl font-black block mb-2">0</span>
+                <span class="text-lg">Abgeordnete gefunden</span>
+            </div>
+
+            <!-- Results -->
+            <div id="results"></div>
+        </div>
+    </section>
+
     <script>
         const API_URL = 'http://localhost:5000/api/search';
         let isSearching = false;
-        
-        // Check if backend server is running
+        let currentContactUrl = '';
+
+        function scrollToSearch() {
+            document.getElementById('search-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
         async function checkServer() {
             try {
                 const response = await fetch('http://localhost:5000/health');
                 const data = await response.json();
                 if (data.status === 'ok') {
-                    document.getElementById('infoBox').innerHTML = '<strong>✓ Server läuft:</strong> Bereit zum Scraping mit Bildern von abgeordnetenwatch.de';
-                    document.getElementById('infoBox').style.background = '#d4edda';
-                    document.getElementById('infoBox').style.borderLeft = '4px solid #28a745';
-                    return true;
+                    document.getElementById('infoBox').innerHTML = '<strong>✓ Server läuft:</strong> Bereit zum Scraping';
+                    document.getElementById('infoBox').className = 'bg-green-50 border-l-4 border-green-500 p-4 rounded-lg mb-6 text-sm text-green-800';
                 }
             } catch (error) {
                 document.getElementById('infoBox').innerHTML = '<strong>⚠️ Server nicht erreichbar:</strong> Starten Sie: <code>python abgeordnetenwatch_server.py</code>';
-                document.getElementById('infoBox').style.background = '#f8d7da';
-                document.getElementById('infoBox').style.borderLeft = '4px solid #dc3545';
-                return false;
+                document.getElementById('infoBox').className = 'bg-red-50 border-l-4 border-red-500 p-4 rounded-lg mb-6 text-sm text-red-800';
             }
         }
-        
+
         checkServer();
-        
+
         function getPartyClass(party) {
-            if (!party) return 'party-other';
+            if (!party) return 'bg-zinc-500';
             const p = party.toLowerCase();
-            if (p.includes('spd')) return 'party-spd';
-            if (p.includes('cdu') || p.includes('csu')) return 'party-cdu';
-            if (p.includes('grün')) return 'party-grune';
-            if (p.includes('fdp')) return 'party-fdp';
-            if (p.includes('afd')) return 'party-afd';
-            if (p.includes('linke')) return 'party-linke';
-            return 'party-other';
+            if (p.includes('spd')) return 'bg-red-600';
+            if (p.includes('cdu') || p.includes('csu')) return 'bg-black';
+            if (p.includes('grün')) return 'bg-green-600';
+            if (p.includes('fdp')) return 'bg-yellow-400 text-black';
+            if (p.includes('afd')) return 'bg-blue-500';
+            if (p.includes('linke')) return 'bg-pink-600';
+            return 'bg-zinc-500';
         }
-        
+
         async function search() {
             const query = document.getElementById('searchInput').value.trim();
             const resultsDiv = document.getElementById('results');
             const statsDiv = document.getElementById('stats');
             const infoBox = document.getElementById('infoBox');
-            
+
             if (!query) {
                 resultsDiv.innerHTML = '';
-                statsDiv.style.display = 'none';
+                statsDiv.classList.add('hidden');
                 return;
             }
-            
-            // Check if it's a 5-digit PLZ
+
             if (!/^\d{5}$/.test(query)) {
-                resultsDiv.innerHTML = `<div class="no-results">Bitte geben Sie eine 5-stellige PLZ ein<br><small>(z.B. 10961, 33098, 72213)</small></div>`;
-                statsDiv.style.display = 'none';
+                resultsDiv.innerHTML = `<div class="bg-zinc-100 rounded-lg p-8 text-center text-zinc-600">Bitte geben Sie eine 5-stellige PLZ ein</div>`;
+                statsDiv.classList.add('hidden');
                 return;
             }
-            
+
             if (isSearching) return;
-            
-            // Show loading state
+
             isSearching = true;
             resultsDiv.innerHTML = `
-                <div class="no-results">
-                    <div style="border: 4px solid #f3f3f3; border-top: 4px solid #667eea; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto;"></div>
-                    <p>Scraping von abgeordnetenwatch.de...</p>
-                    <small>Dies dauert ca. 3-5 Sekunden</small>
+                <div class="bg-zinc-100 rounded-lg p-12 text-center">
+                    <div class="border-4 border-zinc-300 border-t-red-600 rounded-full w-12 h-12 animate-spin mx-auto mb-4"></div>
+                    <p class="text-zinc-700 font-semibold">Scraping von abgeordnetenwatch.de...</p>
+                    <small class="text-zinc-500">Dies dauert ca. 3-5 Sekunden</small>
                 </div>
             `;
-            statsDiv.style.display = 'none';
-            
+            statsDiv.classList.add('hidden');
+
             try {
                 const response = await fetch(`${API_URL}?plz=${query}`);
                 const data = await response.json();
-                
-                if (!response.ok) {
-                    throw new Error(data.error || 'Fehler beim Abrufen der Daten');
-                }
-                
-                // Handle multiple Wahlkreis options
+
+                if (!response.ok) throw new Error(data.error || 'Fehler beim Abrufen der Daten');
+
                 if (data.type === 'multiple_wahlkreis') {
-                    statsDiv.style.display = 'none';
                     let html = `
-                        <div class="wahlkreis-section">
-                            <div class="wahlkreis-title" style="background: #f7fafc; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                                <h3 style="margin: 0 0 10px 0; color: #2d3748;">📍 Mehrere Wahlkreise gefunden</h3>
-                                <p style="margin: 0; color: #4a5568;">${data.message}. Bitte wählen Sie einen:</p>
-                            </div>
+                        <div class="bg-zinc-50 rounded-2xl shadow-xl p-8 border border-zinc-200">
+                            <h3 class="text-2xl font-black mb-4 text-zinc-900">📍 Mehrere Wahlkreise gefunden</h3>
+                            <p class="text-zinc-600 mb-6">${data.message}. Bitte wählen Sie einen:</p>
+                            <div class="space-y-3">
                     `;
-                    
                     data.options.forEach(option => {
                         html += `
-                            <div class="member-card" style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" 
-                                 onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.15)';"
-                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)';"
-                                 onclick="window.open('${option.url}', '_blank')">
-                                <h3 style="margin: 0 0 10px 0; color: #667eea; font-size: 1.1em;">${option.title}</h3>
-                                <p style="margin: 0; color: #4a5568;">🔗 Klicken Sie hier, um die Abgeordneten dieses Wahlkreises zu sehen</p>
+                            <div onclick="searchByUrl('${option.url.replace(/'/g, "\\'")}')" 
+                                class="bg-white border-2 border-zinc-200 hover:border-red-600 rounded-lg p-4 cursor-pointer transition-all transform hover:scale-[1.02] hover:shadow-lg">
+                                <h4 class="font-bold text-zinc-900">${option.title}</h4>
+                                <p class="text-sm text-zinc-500 mt-1">🔗 Klicken Sie hier für Abgeordnete dieses Wahlkreises</p>
                             </div>
                         `;
                     });
-                    
-                    html += '</div>';
+                    html += '</div></div>';
                     resultsDiv.innerHTML = html;
-                    
-                    infoBox.innerHTML = `<strong>ℹ️ Auswahl erforderlich:</strong> ${data.options.length} Wahlkreise gefunden für PLZ ${query}`;
-                    infoBox.style.background = '#fff3cd';
-                    infoBox.style.borderLeft = '4px solid #ffc107';
+                    infoBox.innerHTML = `<strong>ℹ️ Auswahl erforderlich:</strong> ${data.options.length} Wahlkreise gefunden`;
+                    infoBox.className = 'bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg mb-6 text-sm text-yellow-800';
                     return;
                 }
-                
+
                 if (data.members.length === 0) {
-                    resultsDiv.innerHTML = `<div class="no-results">😕 Keine Abgeordneten für PLZ ${query} gefunden</div>`;
-                    statsDiv.style.display = 'none';
+                    resultsDiv.innerHTML = `<div class="bg-zinc-100 rounded-lg p-8 text-center text-zinc-600">😕 Keine Abgeordneten für PLZ ${query} gefunden</div>`;
+                    statsDiv.classList.add('hidden');
                     return;
                 }
-                
-                // Show stats
+
                 document.getElementById('memberCount').textContent = data.members.length;
-                statsDiv.style.display = 'block';
-                
-                // Display results with images
-                let html = '<div class="wahlkreis-section"><div class="wahlkreis-title">PLZ ' + query + ' - ' + data.members.length + ' Abgeordnete gefunden</div>';
-                
+                statsDiv.classList.remove('hidden');
+
+                let html = '<div class="space-y-4">';
                 data.members.forEach(member => {
-                    const imageUrl = member.image_url || 'https://via.placeholder.com/120?text=Kein+Bild';
-                    const mpNameEscaped = member.name.replace(/'/g, "\\'");
-                    const genderEscaped = (member.gender || 'unknown').replace(/'/g, "\\'");
+                    const imageUrl = member.image_url || 'https://via.placeholder.com/100?text=Kein+Bild';
+                    const partyClass = getPartyClass(member.party);
                     const contactButton = member.contact_url 
-                        ? `<button onclick="showEmailModal('${member.contact_url}', '${mpNameEscaped}', '${genderEscaped}')" class="contact-link" style="margin-top: 10px; display: inline-block; background: #667eea; color: white; padding: 8px 16px; border-radius: 5px; font-weight: bold; border: none; cursor: pointer;">✉️ Kontakt aufnehmen</button>`
-                        : `<div style="margin-top: 10px; color: #999; font-size: 0.9em;">⚠️ Kontakt-URL nicht verfügbar</div>`;
+                        ? `<button onclick="showEmailModal('${member.contact_url}', '${member.name.replace(/'/g, "\\'")}', '${(member.gender || 'unknown').replace(/'/g, "\\'")}')" 
+                             class="mt-3 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-all inline-block">✉️ Kontakt aufnehmen</button>`
+                        : `<div class="mt-3 text-zinc-400 text-sm">⚠️ Kontakt-URL nicht verfügbar</div>`;
+                    
                     html += `
-                        <div class="member-card" style="display: flex; align-items: center; gap: 20px; text-align: left;">
-                            <img src="${imageUrl}" alt="${member.name}" 
-                                 style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #667eea; flex-shrink: 0;"
-                                 onerror="this.src='https://via.placeholder.com/100?text=Kein+Bild'">
-                            <div style="flex: 1;">
-                                <div class="member-name">${member.name}</div>
-                                <span class="member-party ${getPartyClass(member.party)}">${member.party || 'Parteilos'}</span>
-                                <div style="margin-top: 5px; font-size: 0.9em; color: #666;">${member.constituency}</div>
-                                ${contactButton}
+                        <div class="bg-white rounded-xl shadow-lg p-6 border border-zinc-200 hover:shadow-xl transition-all">
+                            <div class="flex items-center gap-6">
+                                <img src="${imageUrl}" alt="${member.name}" 
+                                    class="w-24 h-24 rounded-full object-cover border-4 border-zinc-200"
+                                    onerror="this.src='https://via.placeholder.com/100?text=Kein+Bild'">
+                                <div class="flex-1">
+                                    <h3 class="text-2xl font-bold text-zinc-900 mb-2">${member.name}</h3>
+                                    <span class="${partyClass} text-white px-3 py-1 rounded-full text-sm font-bold inline-block mb-2">${member.party || 'Parteilos'}</span>
+                                    <p class="text-zinc-600 text-sm">${member.constituency}</p>
+                                    ${contactButton}
+                                </div>
                             </div>
                         </div>
                     `;
                 });
-                
                 html += '</div>';
                 resultsDiv.innerHTML = html;
-                
-                infoBox.innerHTML = `<strong>✓ Erfolgreich:</strong> ${data.members.length} Abgeordnete mit Bildern von abgeordnetenwatch.de`;
-                infoBox.style.background = '#d4edda';
-                infoBox.style.borderLeft = '4px solid #28a745';
-                
+
+                infoBox.innerHTML = `<strong>✓ Erfolgreich:</strong> ${data.members.length} Abgeordnete gefunden`;
+                infoBox.className = 'bg-green-50 border-l-4 border-green-500 p-4 rounded-lg mb-6 text-sm text-green-800';
+
             } catch (error) {
                 console.error('Error:', error);
-                resultsDiv.innerHTML = `<div class="no-results" style="color: #dc3545;">
-                    <h3>❌ Fehler</h3>
-                    <p>${error.message}</p>
-                    <small>Stellen Sie sicher, dass der Flask-Server läuft:<br><code>python abgeordnetenwatch_server.py</code></small>
-                </div>`;
-                statsDiv.style.display = 'none';
-                
+                resultsDiv.innerHTML = `<div class="bg-red-50 rounded-lg p-8 text-center text-red-700"><h3 class="font-bold text-xl mb-2">❌ Fehler</h3><p>${error.message}</p></div>`;
+                statsDiv.classList.add('hidden');
                 infoBox.innerHTML = '<strong>⚠️ Fehler:</strong> ' + error.message;
-                infoBox.style.background = '#f8d7da';
-                infoBox.style.borderLeft = '4px solid #dc3545';
+                infoBox.className = 'bg-red-50 border-l-4 border-red-500 p-4 rounded-lg mb-6 text-sm text-red-800';
             } finally {
                 isSearching = false;
             }
         }
-        
-        // Add CSS animation for spinner
-        const style = document.createElement('style');
-        style.textContent = '@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }';
-        document.head.appendChild(style);
-        
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                search();
+
+        async function searchByUrl(url) {
+            const resultsDiv = document.getElementById('results');
+            const statsDiv = document.getElementById('stats');
+            const infoBox = document.getElementById('infoBox');
+
+            if (isSearching) return;
+            isSearching = true;
+            resultsDiv.innerHTML = `
+                <div class="bg-zinc-100 rounded-lg p-12 text-center">
+                    <div class="border-4 border-zinc-300 border-t-red-600 rounded-full w-12 h-12 animate-spin mx-auto mb-4"></div>
+                    <p class="text-zinc-700 font-semibold">Scraping von abgeordnetenwatch.de...</p>
+                    <small class="text-zinc-500">Dies dauert ca. 3-5 Sekunden</small>
+                </div>
+            `;
+            statsDiv.classList.add('hidden');
+
+            try {
+                const response = await fetch(`http://localhost:5000/api/scrape-url?url=${encodeURIComponent(url)}`);
+                const data = await response.json();
+
+                if (!response.ok) throw new Error(data.error || 'Fehler beim Abrufen der Daten');
+
+                if (data.members.length === 0) {
+                    resultsDiv.innerHTML = `<div class="bg-zinc-100 rounded-lg p-8 text-center text-zinc-600">😕 Keine Abgeordneten gefunden</div>`;
+                    statsDiv.classList.add('hidden');
+                    return;
+                }
+
+                document.getElementById('memberCount').textContent = data.members.length;
+                statsDiv.classList.remove('hidden');
+
+                let html = '<div class="space-y-4">';
+                data.members.forEach(member => {
+                    const imageUrl = member.image_url || 'https://via.placeholder.com/100?text=Kein+Bild';
+                    const partyClass = getPartyClass(member.party);
+                    const contactButton = member.contact_url 
+                        ? `<button onclick="showEmailModal('${member.contact_url}', '${member.name.replace(/'/g, "\\'")}', '${(member.gender || 'unknown').replace(/'/g, "\\'")}')" 
+                             class="mt-3 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-all inline-block">✉️ Kontakt aufnehmen</button>`
+                        : `<div class="mt-3 text-zinc-400 text-sm">⚠️ Kontakt-URL nicht verfügbar</div>`;
+                    
+                    html += `
+                        <div class="bg-white rounded-xl shadow-lg p-6 border border-zinc-200 hover:shadow-xl transition-all">
+                            <div class="flex items-center gap-6">
+                                <img src="${imageUrl}" alt="${member.name}" 
+                                    class="w-24 h-24 rounded-full object-cover border-4 border-zinc-200"
+                                    onerror="this.src='https://via.placeholder.com/100?text=Kein+Bild'">
+                                <div class="flex-1">
+                                    <h3 class="text-2xl font-bold text-zinc-900 mb-2">${member.name}</h3>
+                                    <span class="${partyClass} text-white px-3 py-1 rounded-full text-sm font-bold inline-block mb-2">${member.party || 'Parteilos'}</span>
+                                    <p class="text-zinc-600 text-sm">${member.constituency}</p>
+                                    ${contactButton}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+                resultsDiv.innerHTML = html;
+
+                infoBox.innerHTML = `<strong>✓ Erfolgreich:</strong> ${data.members.length} Abgeordnete gefunden`;
+                infoBox.className = 'bg-green-50 border-l-4 border-green-500 p-4 rounded-lg mb-6 text-sm text-green-800';
+
+            } catch (error) {
+                console.error('Error:', error);
+                resultsDiv.innerHTML = `<div class="bg-red-50 rounded-lg p-8 text-center text-red-700"><h3 class="font-bold text-xl mb-2">❌ Fehler</h3><p>${error.message}</p></div>`;
+                statsDiv.classList.add('hidden');
+                infoBox.innerHTML = '<strong>⚠️ Fehler:</strong> ' + error.message;
+                infoBox.className = 'bg-red-50 border-l-4 border-red-500 p-4 rounded-lg mb-6 text-sm text-red-800';
+            } finally {
+                isSearching = false;
             }
-        });
-        
-        // Email template from README (German version)
-        const emailTemplateGerman = `[SALUTATION],
+        }
+
+        const emailTemplateGerman = `Betreff:
+Solidarität mit den Menschen im Iran – Einsatz für Menschenrechte
+////
+Nachricht:
+
+[SALUTATION],
 
 als Bürgerin/Bürger Ihres Wahlkreises wende ich mich heute an Sie, um Sie an die Resolution des Deutschen Bundestags vom 21. November 2024 zur „Solidarität mit den Menschen in Iran" zu erinnern.
 
@@ -277,20 +378,13 @@ Die Menschen im Iran verdienen unsere Solidarität und Unterstützung. Ich hoffe
 
 Mit freundlichen Grüßen,
 [Ihr Name]`;
-        
-        let currentContactUrl = '';
-        
+
         function showEmailModal(contactUrl, mpName, gender) {
             currentContactUrl = contactUrl;
             const modal = document.getElementById('emailModal');
             const textarea = document.getElementById('emailTemplate');
-            
-            console.log('showEmailModal called with:', { contactUrl, mpName, gender });
-            
-            // Get last name
+
             const lastName = mpName.split(' ').pop();
-            
-            // Create gender-aware salutation
             let salutation;
             if (gender === 'male') {
                 salutation = `Sehr geehrter Herr ${lastName}`;
@@ -299,45 +393,37 @@ Mit freundlichen Grüßen,
             } else {
                 salutation = 'Sehr geehrtes Mitglied des Deutschen Bundestages';
             }
-            
-            console.log('Generated salutation:', salutation);
-            
-            // Replace placeholder with personalized salutation
+
             let personalizedTemplate = emailTemplateGerman.replace('[SALUTATION]', salutation);
             textarea.value = personalizedTemplate;
-            
-            modal.style.display = 'block';
-            document.getElementById('copyStatus').style.display = 'none';
+
+            modal.classList.remove('hidden');
+            document.getElementById('copyStatus').classList.add('hidden');
         }
-        
+
         function closeEmailModal() {
-            document.getElementById('emailModal').style.display = 'none';
+            document.getElementById('emailModal').classList.add('hidden');
         }
-        
+
         function copyEmailTemplate() {
             const textarea = document.getElementById('emailTemplate');
             textarea.select();
             document.execCommand('copy');
-            
+
             const status = document.getElementById('copyStatus');
-            status.style.display = 'block';
-            setTimeout(() => {
-                status.style.display = 'none';
-            }, 3000);
+            status.classList.remove('hidden');
+            setTimeout(() => status.classList.add('hidden'), 3000);
         }
-        
+
         function openContactForm() {
             if (currentContactUrl) {
                 window.open(currentContactUrl, '_blank');
                 closeEmailModal();
             }
         }
-        
-        // Close modal on outside click
+
         document.getElementById('emailModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeEmailModal();
-            }
+            if (e.target === this) closeEmailModal();
         });
     </script>
 </body>
