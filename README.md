@@ -10,20 +10,20 @@
 
 ### Step 1: Start the Backend Server
 1. Open **PowerShell** or **Command Prompt**
-2. Copy and paste this command:
+2. Navigate to the project folder (where you cloned/downloaded the repo)
+3. Copy and paste these commands:
    ```bash
-   cd "C:\Users\sranjbar\OneDrive - Capgemini\Desktop\free.iran"
    venv\Scripts\activate
    python abgeordnetenwatch_server.py
    ```
-3. Wait until you see: `Running on http://127.0.0.1:5000`
+4. Wait until you see: `Running on http://127.0.0.1:5000`
 4. **Keep this window open!** ✅
 
 ### Step 2: Start the React App
 1. Open a **second** PowerShell/Command Prompt window
-2. Copy and paste this command:
+2. Navigate to the project folder, then:
    ```bash
-   cd "C:\Users\sranjbar\OneDrive - Capgemini\Desktop\free.iran\frontend"
+   cd frontend
    npm run dev
    ```
 3. Wait until you see: `Local: http://localhost:5173`
@@ -85,8 +85,9 @@ free.iran/
 ### Installation
 
 ```bash
-# 1. Navigate to project directory
-cd "C:\Users\sranjbar\OneDrive - Capgemini\Desktop\free.iran"
+# 1. Clone the repository
+git clone https://github.com/mranjbaran/free-iran.git
+cd free-iran
 
 # 2. Create Python virtual environment
 python -m venv venv
@@ -96,13 +97,14 @@ pip install -r requirements.txt
 # 3. Install frontend dependencies
 cd frontend
 npm install
+cd ..
 ```
 
 ### Running the Application
 
 **Terminal 1: Flask Backend (Required)**
 ```bash
-cd "C:\Users\sranjbar\OneDrive - Capgemini\Desktop\free.iran"
+# From project root directory
 venv\Scripts\activate
 python abgeordnetenwatch_server.py
 ```
@@ -110,7 +112,8 @@ python abgeordnetenwatch_server.py
 
 **Terminal 2: React Frontend**
 ```bash
-cd "C:\Users\sranjbar\OneDrive - Capgemini\Desktop\free.iran\frontend"
+# From project root directory
+cd frontend
 npm run dev
 ```
 ✅ Frontend: http://localhost:5173
