@@ -2,6 +2,41 @@
 
 **A web application helping German residents contact their Bundestag representatives about human rights violations in Iran.**
 
+---
+
+## 🚀 **Quick Start for Non-Technical Users**
+
+**Just want to run the app? Follow these simple steps:**
+
+### Step 1: Start the Backend Server
+1. Open **PowerShell** or **Command Prompt**
+2. Copy and paste this command:
+   ```bash
+   cd "C:\Users\sranjbar\OneDrive - Capgemini\Desktop\free.iran"
+   venv\Scripts\activate
+   python abgeordnetenwatch_server.py
+   ```
+3. Wait until you see: `Running on http://127.0.0.1:5000`
+4. **Keep this window open!** ✅
+
+### Step 2: Start the React App
+1. Open a **second** PowerShell/Command Prompt window
+2. Copy and paste this command:
+   ```bash
+   cd "C:\Users\sranjbar\OneDrive - Capgemini\Desktop\free.iran\frontend"
+   npm run dev
+   ```
+3. Wait until you see: `Local: http://localhost:5173`
+
+### Step 3: Open in Browser
+1. Open your web browser (Chrome, Firefox, Edge)
+2. Go to: **http://localhost:5173**
+3. ✅ **The app is now running!**
+
+> **Note:** You need both windows open for the app to work. To stop: Press `Ctrl+C` in both windows.
+
+---
+
 ## 🎯 Purpose
 
 This tool enables people living in Germany to:
