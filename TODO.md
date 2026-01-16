@@ -35,6 +35,10 @@
 - [x] Professional README
 - [x] Updated TODO
 
+### Phase 6: Reliability
+- [x] PLZ input validation + 10s request timeout on frontend
+- [x] User-facing no-results message
+
 ## 📋 Future Enhancements
 
 ### High Priority
@@ -56,9 +60,10 @@
 
 - [ ] Vite occasionally fails first start (restart fixes)
 - [ ] Long names may overflow on mobile
+- [ ] Selenium scrape depends on abgeordnetenwatch.de markup and Firefox/geckodriver availability
 
 ---
 
-**Status:** ✅ Production Ready  
-**Version:** 1.0.0  
-**Updated:** January 14, 2026
+**Status:** Beta (local use)  
+**Version:** 0.0.0  
+**Updated:** January 16, 2026

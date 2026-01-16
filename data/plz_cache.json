@@ -1,0 +1,176 @@
+{
+  "10961": {
+    "data": {
+      "plz": "10961",
+      "type": "members",
+      "count": 1,
+      "members": [
+        {
+          "name": "Pascal Meiser",
+          "profile_url": "https://www.abgeordnetenwatch.de/profile/pascal-meiser",
+          "party": "Die Linke",
+          "constituency": "Wahlkreis: 82 - Berlin-Friedrichshain-Kreuzberg – Prenzlauer Berg Ost",
+          "image_url": "https://www.abgeordnetenwatch.de/sites/default/files/styles/politician_teaser_small/public/politicians-profile-pictures/Presse_Web.jpg?itok=qAWvm4qx",
+          "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1046050",
+          "gender": "male"
+        }
+      ]
+    },
+    "timestamp": "2026-01-16T23:33:24.086878"
+  },
+  "40213": {
+    "data": {
+      "plz": "40213",
+      "type": "multiple_wahlkreis",
+      "message": "PLZ 40213 gehört zu mehreren Wahlkreisen",
+      "options": [
+        {
+          "title": "Düsseldorf Altstadt und Carlstadt",
+          "url": "https://www.abgeordnetenwatch.de/bundestag/abgeordnete?politician_search_keys=40213&fraction=All&constituency=All&electoral_list=All&candidacy_mandate_status_with_context=current_last&constituency=14011"
+        },
+        {
+          "title": "Straßen südl der Bastionstraße",
+          "url": "https://www.abgeordnetenwatch.de/bundestag/abgeordnete?politician_search_keys=40213&fraction=All&constituency=All&electoral_list=All&candidacy_mandate_status_with_context=current_last&constituency=14012"
+        }
+      ]
+    },
+    "timestamp": "2026-01-16T23:34:04.489967"
+  },
+  "url_1031278977779412392": {
+    "data": {
+      "type": "members",
+      "count": 1,
+      "members": [
+        {
+          "name": "Thomas Jarzombek",
+          "profile_url": "https://www.abgeordnetenwatch.de/profile/thomas-jarzombek",
+          "party": "CDU",
+          "constituency": "Wahlkreis: 105 - Düsseldorf I",
+          "image_url": "https://www.abgeordnetenwatch.de/sites/default/files/styles/politician_teaser_small/public/politicians-profile-pictures/1-kopie.jpg?itok=ncVXAk2j",
+          "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1045202",
+          "gender": "male"
+        }
+      ]
+    },
+    "timestamp": "2026-01-16T23:34:22.210441"
+  },
+  "30159": {
+    "data": {
+      "plz": "30159",
+      "type": "members",
+      "count": 4,
+      "members": [
+        {
+          "name": "Swantje Michaelsen",
+          "profile_url": "https://www.abgeordnetenwatch.de/profile/swantje-michaelsen",
+          "party": "BÜNDNIS 90/DIE GRÜNEN",
+          "constituency": "Wahlliste: Landesliste Niedersachsen",
+          "image_url": "https://www.abgeordnetenwatch.de/sites/default/files/styles/politician_teaser_small/public/politicians-profile-pictures/kaminski-71.jpg?itok=0krWtyCS",
+          "contact_url": null,
+          "gender": "female"
+        },
+        {
+          "name": "Micha Fehre",
+          "profile_url": "https://www.abgeordnetenwatch.de/profile/micha-fehre",
+          "party": "AfD",
+          "constituency": "Wahlliste: Landesliste Niedersachsen",
+          "image_url": "https://www.abgeordnetenwatch.de/sites/default/files/styles/politician_teaser_small/public/politicians-profile-pictures/20250220michabusinessfotos-00495-bearbeitetweb-kopie.jpg?itok=BjqPNTuY",
+          "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1044272",
+          "gender": "male"
+        },
+        {
+          "name": "Maren Kaminski",
+          "profile_url": "https://www.abgeordnetenwatch.de/profile/maren-kaminski",
+          "party": "Die Linke",
+          "constituency": "Wahlliste: Landesliste Niedersachsen",
+          "image_url": "https://www.abgeordnetenwatch.de/sites/default/files/styles/politician_teaser_small/public/politicians-profile-pictures/fotowahlkampf2022.jpg?itok=9PFxuvcC",
+          "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1045282",
+          "gender": "female"
+        },
+        {
+          "name": "Boris Pistorius",
+          "profile_url": "https://www.abgeordnetenwatch.de/profile/boris-pistorius",
+          "party": "SPD",
+          "constituency": "Wahlkreis: 42 - Stadt Hannover II",
+          "image_url": "https://www.abgeordnetenwatch.de/sites/default/files/styles/politician_teaser_small/public/politicians-profile-pictures/img3718.jpg?itok=NF8cDB3P",
+          "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1046550",
+          "gender": "male"
+        }
+      ]
+    },
+    "timestamp": "2026-01-16T23:35:40.799610"
+  },
+  "60311": {
+    "data": {
+      "plz": "60311",
+      "type": "members",
+      "count": 3,
+      "members": [
+        {
+          "name": "Armand Zorn",
+          "profile_url": "https://www.abgeordnetenwatch.de/profile/armand-zorn",
+          "party": "SPD",
+          "constituency": "Wahlliste: Landesliste Hessen",
+          "image_url": "https://www.abgeordnetenwatch.de/sites/default/files/styles/politician_teaser_small/public/politicians-profile-pictures/zornarmandk55499q.jpg?itok=O16kTdVY",
+          "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1048326",
+          "gender": "unknown"
+        },
+        {
+          "name": "Janine Wissler",
+          "profile_url": "https://www.abgeordnetenwatch.de/profile/janine-wissler",
+          "party": "Die Linke",
+          "constituency": "Wahlliste: Landesliste Hessen",
+          "image_url": "https://www.abgeordnetenwatch.de/sites/default/files/styles/politician_teaser_small/public/politicians-profile-pictures/cdk0mhyu_0.jpeg?itok=s2zM5O_E",
+          "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1048194",
+          "gender": "unknown"
+        },
+        {
+          "name": "Deborah Düring",
+          "profile_url": "https://www.abgeordnetenwatch.de/profile/deborah-duering",
+          "party": "BÜNDNIS 90/DIE GRÜNEN",
+          "constituency": "Wahlliste: Landesliste Hessen",
+          "image_url": "https://www.abgeordnetenwatch.de/sites/default/files/styles/politician_teaser_small/public/politicians-profile-pictures/duering-deborah-mdb.jpg?itok=1MUSblJ_",
+          "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1044118",
+          "gender": "female"
+        }
+      ]
+    },
+    "timestamp": "2026-01-16T23:37:08.688298"
+  },
+  "url_-6730033512296138520": {
+    "data": {
+      "type": "members",
+      "count": 3,
+      "members": [
+        {
+          "name": "Sara Nanni",
+          "profile_url": "https://www.abgeordnetenwatch.de/profile/sara-nanni",
+          "party": "BÜNDNIS 90/DIE GRÜNEN",
+          "constituency": "Wahlliste: Landesliste Nordrhein-Westfalen",
+          "image_url": "https://www.abgeordnetenwatch.de/sites/default/files/styles/politician_teaser_small/public/politicians-profile-pictures/ninagraphie-6719.jpeg?itok=98WmMU0c",
+          "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1046284",
+          "gender": "female"
+        },
+        {
+          "name": "Lisa Schubert",
+          "profile_url": "https://www.abgeordnetenwatch.de/profile/lisa-schubert",
+          "party": "Die Linke",
+          "constituency": "N/A",
+          "image_url": "https://www.abgeordnetenwatch.de/sites/default/files/styles/politician_teaser_small/public/politicians-profile-pictures/design-ohne-titel-5.png?itok=LbcJy_8e",
+          "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1047276",
+          "gender": "female"
+        },
+        {
+          "name": "Johannes Winkel",
+          "profile_url": "https://www.abgeordnetenwatch.de/profile/johannes-winkel",
+          "party": "CDU",
+          "constituency": "Wahlkreis: 106 - Düsseldorf II",
+          "image_url": "https://www.abgeordnetenwatch.de/sites/default/files/styles/politician_teaser/public/default-images/profil_dummy_0.jpg?itok=-_2I-C62",
+          "contact_url": "https://www.bundestag.de/services/formular/contactform?mdbId=1048158",
+          "gender": "male"
+        }
+      ]
+    },
+    "timestamp": "2026-01-16T23:37:27.949458"
+  }
+}

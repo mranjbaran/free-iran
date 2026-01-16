@@ -3,41 +3,41 @@ import { Translation } from './types';
 export const translations: Record<string, Translation> = {
   en: {
     hero: {
-      badge: "Urgent: Day 17 - Internet Blackout",
+      badge: "Urgent: Day 20 - Internet Blackout",
       title: "STOP THE ",
       highlight: "BLOODSHED",
-      description: "2,400+ protesters killed. 18,000+ arrested. Internet acts as a weapon of silence. The world must act now.",
+      description: "3,090 confirmed deaths; 3,882 under review. 22,123 arrests. Internet blackout has passed 190 hours.",
       ctaAction: "Act Now: Contact Bundestag",
       ctaRead: "Read Situation Report"
     },
     stats: {
-      deaths: "2,403",
-      deathsLabel: "Protesters Killed",
-      deathsSub: "Includes 12 children & 9 bystanders",
-      arrests: "18,434",
+      deaths: "3,090",
+      deathsLabel: "Confirmed deaths",
+      deathsSub: "Includes 19 children; 3,882 under review",
+      arrests: "22,123",
       arrestsLabel: "Citizens Arrested",
-      arrestsSub: "97 forced confessions broadcast",
-      gatherings: "614",
-      gatheringsLabel: "Protest Gatherings",
+      arrestsSub: "132 forced confessions broadcast",
+      gatherings: "619",
+      gatheringsLabel: "Recorded Protests",
       gatheringsSub: "Across 187 cities & 31 provinces"
     },
     report: {
       title: "What is Happening?",
-      description: "As of Day 17, Iran is under a near-total communications blackout. HRANA reports a massive surge in violence. Security forces are using war-grade weaponry against unarmed civilians while the internet shutdown prevents real-time verification.",
+      description: "Day 20: the internet blackout has exceeded 190 hours. HRANA reports 3,090 confirmed deaths, 22,123 arrests, and 2,055 severe injuries while 3,882 cases remain under review. Documentation is hampered, prompting calls for citizen evidence.",
       quote: "The deliberate shutdown of the internet has disrupted access to vital information... creating conditions for the continued excessive use of force.",
       quoteAuthor: "Human Rights Activists in Iran (HRANA)",
       timelineTitle: "Timeline of Repression",
       timeline: [
-        { date: "Day 1-17", title: "Nationwide Uprising", description: "Protests spread to 187 cities despite severe repression." },
-        { date: "Ongoing", title: "Digital Darkness", description: "Internet blackout limits access to medical services and verification." },
-        { date: "Latest", title: "Diplomatic Escalation", description: "EU condemns violence; Canada advises citizens to leave; UN calls for restraint." }
+        { date: "Day 20", title: "Blackout >190 hours", description: "Fixed and mobile internet remain restricted; messaging and calls disrupted." },
+        { date: "International", title: "Rising pressure", description: "MSC disinvites officials; governments warn citizens; G7 condemned the crackdown." },
+        { date: "Accountability", title: "Evidence collection", description: "HRANA and Spreading Justice urge citizens to document abuses for legal action." }
       ],
       victimsTitle: "The Toll",
-      victimsText: "Casualties have skyrocketed. 2,403 confirmed deaths. Hospitals are unsafe zones. 1,134 people have severe injuries but fear seeking help due to arrests at medical centers.",
+      victimsText: "3,090 confirmed deaths (2,885 protesters, 165 security, 21 civilians); at least 19 children. 2,055 severe injuries; 3,882 deaths under review; 22,123 arrests; 132 forced confessions broadcast.",
       impactAreas: "Impacted Provinces",
       impactAreasList: ["All 31 Provinces", "Tehran", "Kurdistan", "Sistan & Baluchestan"],
       blackoutTitle: "Information Blackout",
-      blackoutText: "The severing of communications is a strategic tactic to hide atrocities. Verifiable evidence is limited, but aggregated data confirms a massacre."
+      blackoutText: "The shutdown, now beyond 190 hours, blocks calls, banking, and media. It hides evidence of abuses and complicates tracing detainees."
     },
     action: {
       title: "Germany: Take Action",
@@ -62,69 +62,68 @@ export const translations: Record<string, Translation> = {
       step2Title: "Step 2: Copy Template",
       step2Text: "Don't forget to add your name and address.",
       openClientBtn: "Open Email Client",
-      searchingMsg: "Searching... This may take 3-5 seconds.",
+      searchingMsg: "Searching... This may take up to 10 seconds.",
       emailTemplate: {
-        subject: "DRINGEND: Stoppen Sie das Massaker im Iran",
+        subject: "DRINGEND: Staatsgewalt im Iran – Bitte handeln Sie",
         body: `Sehr geehrte Damen und Herren Abgeordnete,
 
-als Bürger/in Ihres Wahlkreises schreibe ich Ihnen, um mein Entsetzen über die Gräueltaten im Iran auszudrücken.
+      Ich wende mich als Bürger*in Ihres Wahlkreises an Sie mit großer Sorge über die eskalierende Gewalt des iranischen Regimes gegen die eigene Bevölkerung.
 
-Glaubwürdige Berichte von HRANA bestätigen, dass bis zum 17. Protesttag über 2.403 Demonstranten getötet und 18.434 verhaftet wurden. Das iranische Regime nutzt einen totalen Internet-Blackout, um diese Verbrechen gegen die Menschlichkeit zu verbergen.
+      Seit Ende Dezember 2025 kommt es im Iran landesweit zu massiver staatlicher Repression. Verlässliche Berichte internationaler Menschenrechtsorganisationen dokumentieren tausende Tote, zehntausende willkürliche Verhaftungen sowie gezielte Verstümmelungen von Demonstrierenden. Der vollständige Internet-Blackout dient offenbar dazu, schwere Menschenrechtsverbrechen ohne internationale Beobachtung zu begehen.
 
-Deutschland darf nicht schweigen. Als meine Vertretung im Bundestag fordere ich Sie auf:
-1. Fordern Sie ein sofortiges Ende des Blutvergießens und die Wiederherstellung des Internets.
-2. Setzen Sie sich für scharfe EU-Sanktionen gegen die IRGC und Verantwortliche ein.
-3. Unterstützen Sie die Ausweisung iranischer Botschafter, bis die Gewalt endet.
+      Als meine Vertretung im Deutschen Bundestag bitte ich Sie eindringlich, sich für konkrete Maßnahmen einzusetzen, insbesondere:
 
-Bitte handeln Sie jetzt.
+      1. die zeitnahe Einstufung der IRGC als Terrororganisation auf EU-Ebene,
+      2. ein Ende der politischen und wirtschaftlichen Normalisierung mit dem iranischen Regime,
+      3. die Übernahme politischer Patenschaften für Inhaftierte, um Hinrichtungen durch öffentliche Aufmerksamkeit zu verhindern.
 
-Mit freundlichen Grüßen,
-[Ihr Name]
-[Ihre Stadt/PLZ]`
+      Die Menschen im Iran kämpfen unter Lebensgefahr für Freiheit und Würde. Ich erwarte, dass Deutschland diesen Einsatz nicht nur rhetorisch, sondern politisch unterstützt.
+
+      Ich bitte Sie um eine kurze persönliche Stellungnahme, welche dieser Schritte Sie konkret unterstützen werden.`
       }
     },
     footer: {
-      source: "Data source: HRANA (Human Rights Activists News Agency) - Day 17 Report.",
+      source: "Data source: HRANA (Human Rights Activists News Agency) - Day 20 Report.",
       disclaimer: "Independent solidarity project. Not affiliated with any political party."
     }
   },
   de: {
     hero: {
-      badge: "Dringend: Tag 17 - Internet-Blackout",
+      badge: "Dringend: Tag 20 - Internet-Blackout",
       title: "STOPPT DAS ",
       highlight: "BLUTVERGIEẞEN",
-      description: "2.400+ Demonstranten getötet. 18.000+ verhaftet. Das Regime nutzt das Internet als Waffe. Die Welt muss jetzt handeln.",
+      description: "3.090 bestätigte Tote; 3.882 Fälle in Prüfung. 22.123 Festnahmen. Der Blackout dauert über 190 Stunden an.",
       ctaAction: "Jetzt handeln: Bundestag kontaktieren",
       ctaRead: "Lagebericht lesen"
     },
     stats: {
-      deaths: "2.403",
-      deathsLabel: "Getötete Demonstranten",
-      deathsSub: "Darunter 12 Kinder & 9 Unbeteiligte",
-      arrests: "18.434",
+      deaths: "3.090",
+      deathsLabel: "Bestätigte Todesfälle",
+      deathsSub: "Darunter 19 Kinder; 3.882 Fälle in Prüfung",
+      arrests: "22.123",
       arrestsLabel: "Verhaftungen",
-      arrestsSub: "97 erzwungene Geständnisse",
-      gatherings: "614",
-      gatheringsLabel: "Protestversammlungen",
+      arrestsSub: "132 erzwungene Geständnisse ausgestrahlt",
+      gatherings: "619",
+      gatheringsLabel: "Erfasste Proteste",
       gatheringsSub: "In 187 Städten & 31 Provinzen"
     },
     report: {
       title: "Was passiert im Iran?",
-      description: "Am 17. Tag herrscht im Iran ein fast vollständiger Kommunikations-Blackout. HRANA berichtet von einem massiven Anstieg der Gewalt. Sicherheitskräfte setzen Kriegswaffen gegen unbewaffnete Zivilisten ein.",
+      description: "Tag 20: Der Internet-Blackout überschreitet 190 Stunden. HRANA meldet 3.090 bestätigte Tote, 22.123 Festnahmen und 2.055 Schwerverletzte; 3.882 Fälle werden noch geprüft. Die Dokumentation ist erschwert, daher ruft HRANA zu Bürger*innen-Berichten auf.",
       quote: "Die absichtliche Abschaltung des Internets hat den Zugang zu lebenswichtigen Informationen unterbrochen... und schafft Bedingungen für weitere exzessive Gewaltanwendung.",
       quoteAuthor: "Human Rights Activists in Iran (HRANA)",
       timelineTitle: "Chronologie der Unterdrückung",
       timeline: [
-        { date: "Tag 1-17", title: "Landesweite Aufstände", description: "Proteste in 187 Städten trotz brutaler Repression." },
-        { date: "Aktuell", title: "Digitale Dunkelheit", description: "Internet-Blackout verhindert Verifizierung und medizinische Hilfe." },
-        { date: "Reaktionen", title: "Diplomatische Eskalation", description: "EU verurteilt Gewalt; Kanada rät zur Ausreise; UN fordert Zurückhaltung." }
+        { date: "Tag 20", title: "Blackout >190 Std.", description: "Festnetz und Mobilfunk bleiben eingeschränkt; Messenger und Anrufe gestört." },
+        { date: "International", title: "Wachsender Druck", description: "MSC lädt Funktionäre aus; Staaten warnen Bürger; G7 verurteilt das Vorgehen." },
+        { date: "Rechenschaft", title: "Beweissicherung", description: "HRANA und Spreading Justice sammeln Beweise für rechtliche Schritte." }
       ],
       victimsTitle: "Die Opfer",
-      victimsText: "Die Opferzahlen sind explodiert. 2.403 bestätigte Todesfälle. Krankenhäuser sind unsichere Zonen. 1.134 Menschen haben schwere Verletzungen, meiden aber aus Angst vor Verhaftung medizinische Hilfe.",
+      victimsText: "3.090 bestätigte Tote (2.885 Demonstrierende, 165 Sicherheitskräfte, 21 Unbeteiligte); mind. 19 Kinder. 2.055 Schwerverletzte; 3.882 Todesfälle werden geprüft; 22.123 Festnahmen; 132 erzwungene Geständnisse.",
       impactAreas: "Betroffene Gebiete",
       impactAreasList: ["Alle 31 Provinzen", "Teheran", "Kurdistan", "Sistan & Belutschistan"],
       blackoutTitle: "Informationssperre",
-      blackoutText: "Die Unterbrechung der Kommunikation ist eine strategische Taktik, um Gräueltaten zu verbergen. Beweise sind begrenzt, aber die Daten bestätigen ein Massaker."
+      blackoutText: "Der nun über 190 Stunden andauernde Shutdown blockiert Anrufe, Banking und Medien. Er erschwert die Nachverfolgung von Festnahmen und verschleiert Beweise."
     },
     action: {
       title: "Deutschland: Handeln Sie",
@@ -149,69 +148,68 @@ Mit freundlichen Grüßen,
       step2Title: "Schritt 2: Vorlage kopieren",
       step2Text: "Vergessen Sie nicht, Ihren Namen und Ihre Adresse hinzuzufügen.",
       openClientBtn: "E-Mail-Programm öffnen",
-      searchingMsg: "Suche läuft... Dies kann 3-5 Sekunden dauern.",
+      searchingMsg: "Suche läuft... Dies kann bis zu 10 Sekunden dauern.",
       emailTemplate: {
-        subject: "DRINGEND: Stoppen Sie das Massaker im Iran",
+        subject: "DRINGEND: Systematische Staatsgewalt im Iran – Bitte handeln",
         body: `Sehr geehrte Damen und Herren Abgeordnete,
 
-als Bürger/in Ihres Wahlkreises schreibe ich Ihnen, um mein Entsetzen über die Gräueltaten im Iran auszudrücken.
+      Ich wende mich als Bürger*in Ihres Wahlkreises an Sie mit großer Sorge über die eskalierende Gewalt des iranischen Regimes gegen die eigene Bevölkerung.
 
-Glaubwürdige Berichte von HRANA bestätigen, dass bis zum 17. Protesttag über 2.403 Demonstranten getötet und 18.434 verhaftet wurden. Das iranische Regime nutzt einen totalen Internet-Blackout, um diese Verbrechen gegen die Menschlichkeit zu verbergen.
+      Seit Ende Dezember 2025 kommt es im Iran landesweit zu massiver staatlicher Repression. Verlässliche Berichte internationaler Menschenrechtsorganisationen dokumentieren tausende Tote, zehntausende willkürliche Verhaftungen sowie gezielte Verstümmelungen von Demonstrierenden. Der vollständige Internet-Blackout dient offenbar dazu, schwere Menschenrechtsverbrechen ohne internationale Beobachtung zu begehen.
 
-Deutschland darf nicht schweigen. Als meine Vertretung im Bundestag fordere ich Sie auf:
-1. Fordern Sie ein sofortiges Ende des Blutvergießens und die Wiederherstellung des Internets.
-2. Setzen Sie sich für scharfe EU-Sanktionen gegen die IRGC und Verantwortliche ein.
-3. Unterstützen Sie die Ausweisung iranischer Botschafter, bis die Gewalt endet.
+      Als meine Vertretung im Deutschen Bundestag bitte ich Sie eindringlich, sich für konkrete Maßnahmen einzusetzen, insbesondere:
 
-Bitte handeln Sie jetzt.
+      1. die zeitnahe Einstufung der IRGC als Terrororganisation auf EU-Ebene,
+      2. ein Ende der politischen und wirtschaftlichen Normalisierung mit dem iranischen Regime,
+      3. die Übernahme politischer Patenschaften für Inhaftierte, um Hinrichtungen durch öffentliche Aufmerksamkeit zu verhindern.
 
-Mit freundlichen Grüßen,
-[Ihr Name]
-[Ihre Stadt/PLZ]`
+      Die Menschen im Iran kämpfen unter Lebensgefahr für Freiheit und Würde. Ich erwarte, dass Deutschland diesen Einsatz nicht nur rhetorisch, sondern politisch unterstützt.
+
+      Ich bitte Sie um eine kurze persönliche Stellungnahme, welche dieser Schritte Sie konkret unterstützen werden.`
       }
     },
     footer: {
-      source: "Datenquelle: HRANA (Human Rights Activists News Agency) - Bericht Tag 17.",
+      source: "Datenquelle: HRANA (Human Rights Activists News Agency) - Bericht Tag 20.",
       disclaimer: "Unabhängiges Solidaritätsprojekt. Keine Parteizugehörigkeit."
     }
   },
   fa: {
     hero: {
-      badge: "فوری: روز ۱۷ - قطع سراسری اینترنت",
+      badge: "فوری: روز ۲۰ - قطع سراسری اینترنت",
       title: "",
       highlight: "توقف خونریزی",
-      description: "بیش از ۲۴۰۰ کشته. ۱۸۰۰۰ بازداشتی. اینترنت به سلاحی برای سکوت تبدیل شده است. جهان باید همین حالا اقدام کند.",
+      description: "۳٬۰۹۰ مرگ تأییدشده؛ ۳٬۸۸۲ مورد در حال بررسی. ۲۲٬۱۲۳ بازداشت. قطع اینترنت بیش از ۱۹۰ ساعت ادامه دارد.",
       ctaAction: "اقدام کنید: تماس با پارلمان آلمان",
       ctaRead: "گزارش وضعیت"
     },
     stats: {
-      deaths: "۲۴۰۳",
-      deathsLabel: "کشته‌شدگان",
-      deathsSub: "شامل ۱۲ کودک و ۹ عابر",
-      arrests: "۱۸۴۳۴",
+      deaths: "۳٬۰۹۰",
+      deathsLabel: "مرگ تأییدشده",
+      deathsSub: "۱۹ کودک؛ ۳٬۸۸۲ مورد در حال بررسی",
+      arrests: "۲۲٬۱۲۳",
       arrestsLabel: "بازداشت‌شدگان",
-      arrestsSub: "پخش ۹۷ اعتراف اجباری",
-      gatherings: "۶۱۴",
-      gatheringsLabel: "تجمع اعتراضی",
+      arrestsSub: "پخش ۱۳۲ اعتراف اجباری",
+      gatherings: "۶۱۹",
+      gatheringsLabel: "تجمعات ثبت‌شده",
       gatheringsSub: "در ۱۸۷ شهر و ۳۱ استان"
     },
     report: {
       title: "چه اتفاقی در حال رخ دادن است؟",
-      description: "در هفدهمین روز، ایران در خاموشی تقریباً کامل ارتباطی به سر می‌برد. هرانا گزارش می‌دهد که خشونت به شدت افزایش یافته است. نیروهای امنیتی از سلاح‌های جنگی علیه غیرنظامیان استفاده می‌کنند در حالی که قطع اینترنت مانع از اطلاع‌رسانی می‌شود.",
+      description: "روز ۲۰: قطع اینترنت بیش از ۱۹۰ ساعت طول کشیده است. هرانا ۳٬۰۹۰ مرگ تأییدشده، ۲۲٬۱۲۳ بازداشت و ۲٬۰۵۵ مجروح شدید گزارش می‌کند؛ ۳٬۸۸۲ مورد مرگ هنوز در حال بررسی است. مستندسازی سخت شده و هرانا از شاهدان می‌خواهد شواهد ارسال کنند.",
       quote: "قطع عمدی اینترنت دسترسی به اطلاعات حیاتی را مختل کرده... و شرایط را برای ادامه استفاده افراطی از زور فراهم کرده است.",
       quoteAuthor: "مجموعه فعالان حقوق بشر در ایران (هرانا)",
       timelineTitle: "گاه‌شمار سرکوب",
       timeline: [
-        { date: "روز ۱-۱۷", title: "خیزش سراسری", description: "گسترش اعتراضات به ۱۸۷ شهر با وجود سرکوب شدید." },
-        { date: "وضعیت فعلی", title: "تاریکی دیجیتال", description: "قطع اینترنت دسترسی به خدمات پزشکی و تایید اخبار را مختل کرده است." },
-        { date: "واکنش‌ها", title: "فشار دیپلماتیک", description: "اتحادیه اروپا خشونت را محکوم کرد؛ کانادا به شهروندانش هشدار خروج داد." }
+        { date: "روز ۲۰", title: "بیش از ۱۹۰ ساعت", description: "اینترنت ثابت و همراه محدود است؛ پیام‌رسان و تماس‌ها مختل شده‌اند." },
+        { date: "واکنش جهانی", title: "افزایش فشار", description: "کنفرانس امنیتی مونیخ دعوت را لغو کرد؛ دولت‌ها به شهروندان هشدار دادند؛ بیانیه G7 محکوم کرد." },
+        { date: "پاسخگویی", title: "جمع‌آوری شواهد", description: "هرانا و Spreading Justice برای اقدام حقوقی به مستندسازی مردمی تکیه می‌کنند." }
       ],
       victimsTitle: "آمار قربانیان",
-      victimsText: "آمار تلفات به شدت افزایش یافته است. ۲۴۰۳ مرگ تایید شده. بیمارستان‌ها ناامن هستند. ۱۱۳۴ نفر به شدت مجروح شده‌اند اما از ترس بازداشت به مراکز درمانی مراجعه نمی‌کنند.",
+      victimsText: "۳٬۰۹۰ مرگ تأییدشده (۲٬۸۸۵ معترض، ۱۶۵ نیروی امنیتی، ۲۱ غیرمعترض)؛ حداقل ۱۹ کودک. ۲٬۰۵۵ مجروح شدید؛ ۳٬۸۸۲ مرگ در حال بررسی؛ ۲۲٬۱۲۳ بازداشت؛ ۱۳۲ اعتراف اجباری پخش‌شده.",
       impactAreas: "مناطق تحت تاثیر",
       impactAreasList: ["تمامی ۳۱ استان", "تهران", "کردستان", "سیستان و بلوچستان"],
       blackoutTitle: "بایکوت خبری",
-      blackoutText: "قطع ارتباطات تاکتیکی استراتژیک برای پنهان کردن جنایات است. شواهد محدود است، اما داده‌های تجمیعی یک کشتار را تایید می‌کند."
+      blackoutText: "قطع بیش از ۱۹۰ ساعته تماس‌ها، بانکداری و رسانه را مختل کرده و پیگیری بازداشتی‌ها و جمع‌آوری شواهد را دشوار می‌کند."
     },
     action: {
       title: "آلمان: اقدام کنید",
@@ -236,29 +234,23 @@ Mit freundlichen Grüßen,
       step2Title: "گام ۲: کپی متن نامه",
       step2Text: "فراموش نکنید نام و آدرس خود را اضافه کنید.",
       openClientBtn: "باز کردن ایمیل",
-      searchingMsg: "در حال جستجو... ممکن است ۳ تا ۵ ثانیه طول بکشد.",
+      searchingMsg: "در حال جستجو... ممکن است تا ۱۰ ثانیه طول بکشد.",
       emailTemplate: {
-        subject: "DRINGEND: Stoppen Sie das Massaker im Iran",
-        body: `Sehr geehrte Damen und Herren Abgeordnete,
+        subject: "فوری: خشونت دولتی در ایران – لطفاً اقدام کنید",
+        body: `نماینده محترم مجلس،
 
-als Bürger/in Ihres Wahlkreises schreibe ich Ihnen, um mein Entsetzen über die Gräueltaten im Iran auszudrücken.
+      به دلیل خشونت گسترده در ایران می‌نویسم: ۳٬۰۹۰ مرگ تأییدشده (حداقل ۱۹ کودک)، ۳٬۸۸۲ مورد در حال بررسی، ۲٬۰۵۵ مجروح شدید، ۲۲٬۱۲۳ بازداشت و قطع اینترنت سراسری بیش از ۱۹۰ ساعت که مستندسازی را مختل کرده است.
 
-Glaubwürdige Berichte von HRANA bestätigen, dass bis zum 17. Protesttag über 2.403 Demonstranten getötet und 18.434 verhaftet wurden. Das iranische Regime nutzt einen totalen Internet-Blackout, um diese Verbrechen gegen die Menschlichkeit zu verbergen.
+      خواهش می‌کنم از این اقدامات حمایت کنید:
+      ۱) قرار دادن سپاه در فهرست تروریستی اتحادیه اروپا.
+      ۲) تعلیق روابط دیپلماتیک و اقتصادی با نهادهای وابسته به حکومت.
+      ۳) پذیرش سرپرستی سیاسی بازداشت‌شدگان برای جلوگیری از اعدام.
 
-Deutschland darf nicht schweigen. Als meine Vertretung im Bundestag fordere ich Sie auf:
-1. Fordern Sie ein sofortiges Ende des Blutvergießens und die Wiederherstellung des Internets.
-2. Setzen Sie sich für scharfe EU-Sanktionen gegen die IRGC und Verantwortliche ein.
-3. Unterstützen Sie die Ausweisung iranischer Botschafter, bis die Gewalt endet.
-
-Bitte handeln Sie jetzt.
-
-Mit freundlichen Grüßen,
-[Ihr Name]
-[Ihre Stadt/PLZ]`
+      لطفاً بگویید کدام‌یک از این اقدامات را در پارلمان پیگیری می‌کنید؟`
       }
     },
     footer: {
-      source: "منبع داده: هرانا (خبرگزاری فعالان حقوق بشر) - گزارش روز ۱۷.",
+      source: "منبع داده: هرانا (خبرگزاری فعالان حقوق بشر) - گزارش روز ۲۰.",
       disclaimer: "پروژه همبستگی مستقل. وابسته به هیچ حزب سیاسی نیست."
     }
   }

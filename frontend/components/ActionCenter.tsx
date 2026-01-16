@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Copy, Check, ExternalLink, ArrowRight, AlertCircle } from 'lucide-react';
+import { ArrowRight, AlertCircle } from 'lucide-react';
 import { Translation, MP } from '../types';
 import MPList from './MPList';
 
@@ -13,6 +13,7 @@ interface WahlkreisOption {
 }
 
 const ActionCenter: React.FC<ActionCenterProps> = ({ t }) => {
+  const apiBase = (import.meta as any)?.env?.VITE_API_BASE?.replace(/\/$/, '') || 'http://localhost:5000';
   const [plz, setPlz] = useState('');
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [copied, setCopied] = useState(false);
@@ -20,19 +21,32 @@ const ActionCenter: React.FC<ActionCenterProps> = ({ t }) => {
   const [error, setError] = useState<string | null>(null);
   const [members, setMembers] = useState<MP[]>([]);
   const [wahlkreisOptions, setWahlkreisOptions] = useState<WahlkreisOption[]>([]);
+  const [noResults, setNoResults] = useState(false);
+
+  const fetchWithTimeout = async (url: string, timeoutMs = 15000) => {
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
+
+    try {
+      return await fetch(url, { signal: controller.signal });
+    } finally {
+      window.clearTimeout(timeoutId);
+    }
+  };
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (plz.length !== 5) {
+    if (!/^\d{5}$/.test(plz)) {
       setError('Bitte geben Sie eine 5-stellige PLZ ein');
       return;
     }
 
     setLoading(true);
     setError(null);
+    setNoResults(false);
 
     try {
-      const response = await fetch(`http://localhost:5000/api/search?plz=${plz}`);
+      const response = await fetchWithTimeout(`${apiBase}/api/search?plz=${plz}`);
       const data = await response.json();
 
       if (!response.ok) {
@@ -43,11 +57,18 @@ const ActionCenter: React.FC<ActionCenterProps> = ({ t }) => {
         setWahlkreisOptions(data.options);
         setStep(2);
       } else if (data.type === 'members') {
-        setMembers(data.members);
+        setMembers(data.members || []);
+        setNoResults(!data.members || data.members.length === 0);
         setStep(3);
+      } else {
+        setError('Unerwartete Antwort vom Server');
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unbekannter Fehler');
+      if (err instanceof DOMException && err.name === 'AbortError') {
+        setError('Zeitüberschreitung – bitte erneut versuchen');
+      } else {
+        setError(err instanceof Error ? err.message : 'Unbekannter Fehler');
+      }
     } finally {
       setLoading(false);
     }
@@ -56,19 +77,25 @@ const ActionCenter: React.FC<ActionCenterProps> = ({ t }) => {
   const handleWahlkreisSelect = async (url: string) => {
     setLoading(true);
     setError(null);
+    setNoResults(false);
 
     try {
-      const response = await fetch(`http://localhost:5000/api/scrape-url?url=${encodeURIComponent(url)}`);
+      const response = await fetchWithTimeout(`${apiBase}/api/scrape-url?url=${encodeURIComponent(url)}`);
       const data = await response.json();
 
       if (!response.ok) {
         throw new Error(data.error || 'Fehler beim Abrufen der Daten');
       }
 
-      setMembers(data.members);
+      setMembers(data.members || []);
+      setNoResults(!data.members || data.members.length === 0);
       setStep(3);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unbekannter Fehler');
+      if (err instanceof DOMException && err.name === 'AbortError') {
+        setError('Zeitüberschreitung – bitte erneut versuchen');
+      } else {
+        setError(err instanceof Error ? err.message : 'Unbekannter Fehler');
+      }
     } finally {
       setLoading(false);
     }
@@ -80,6 +107,7 @@ const ActionCenter: React.FC<ActionCenterProps> = ({ t }) => {
     setMembers([]);
     setWahlkreisOptions([]);
     setError(null);
+    setNoResults(false);
   };
 
   const copyToClipboard = () => {
@@ -158,20 +186,22 @@ const ActionCenter: React.FC<ActionCenterProps> = ({ t }) => {
                        <label htmlFor="plz" className="block text-sm font-medium text-zinc-700 mb-2">{t.plzLabel}</label>
                        <div className="flex gap-2">
                          <input 
-                            type="text" 
-                            id="plz"
-                            value={plz}
-                            onChange={(e) => setPlz(e.target.value)}
-                            placeholder={t.plzPlaceholder}
-                            className="flex-1 p-4 border border-zinc-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none text-lg text-left"
-                            required
-                            maxLength={5}
-                            disabled={loading}
+                           type="text" 
+                           id="plz"
+                           value={plz}
+                           onChange={(e) => setPlz(e.target.value.replace(/\D/g, '').slice(0, 5))}
+                           placeholder={t.plzPlaceholder}
+                           className="flex-1 p-4 border border-zinc-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none text-lg text-left"
+                           required
+                           maxLength={5}
+                           pattern="\d{5}"
+                           inputMode="numeric"
+                           disabled={loading}
                          />
                          <button 
                             type="submit"
                             disabled={loading || plz.length !== 5}
-                            className="bg-zinc-900 text-white px-8 py-4 rounded-lg font-bold hover:bg-zinc-800 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="bg-zinc-900 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-bold hover:bg-zinc-800 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base whitespace-nowrap"
                          >
                            {loading ? t.searchingMsg : t.startBtn} {!loading && <ArrowRight size={20} className="rtl:rotate-180" />}
                          </button>
@@ -209,6 +239,16 @@ const ActionCenter: React.FC<ActionCenterProps> = ({ t }) => {
                       </button>
                     ))}
                   </div>
+                </div>
+              )}
+
+              {step === 3 && noResults && (
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold text-zinc-900">Keine Abgeordneten gefunden</h3>
+                  <p className="text-zinc-600">Für die angegebene PLZ wurden keine Datensätze zurückgegeben. Bitte prüfen Sie die PLZ oder versuchen Sie es später erneut.</p>
+                  <button onClick={resetSearch} className="inline-flex items-center gap-2 text-sm text-red-700 font-semibold">
+                    <ArrowRight size={16} className="rtl:rotate-180" /> Neue Suche starten
+                  </button>
                 </div>
               )}
             </div>

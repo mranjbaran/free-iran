@@ -75,9 +75,10 @@ free.iran/
 ## 🚀 Quick Start
 
 ### Prerequisites
-- **Python 3.13+**
+- **Python 3.10+**
 - **Node.js 18+**
 - **Firefox** (for Selenium scraping)
+- **Geckodriver** available on your PATH (required by Selenium)
 
 ### Installation
 
@@ -114,6 +115,16 @@ cd frontend
 npm run dev
 ```
 ✅ Frontend: http://localhost:3000
+
+### Netlify Deployment (Frontend)
+- Set env var `VITE_API_BASE` to your deployed backend URL (e.g., `https://<your-backend-host>`).
+- Build command: `npm run build`
+- Publish directory: `frontend/dist`
+- The backend (Flask/Selenium) must be deployed separately and allow CORS from your Netlify domain.
+
+### Operational Notes
+- Backend responses are cached for 7 days in `data/plz_cache.json`. Delete the file to force fresh scraping.
+- Frontend requests time out after ~10 seconds and surface a user-facing error if the scrape takes too long.
 
 ## 🛠️ Technology Stack
 
@@ -248,8 +259,7 @@ als Bürgerin/Bürger Ihres Wahlkreises wende ich mich heute an Sie...
 - ✅ **CORS enabled** - Safe cross-origin requests
 
 ## 🧪 Testing
-
-Test the application with these PLZ codes:
+- No automated test suite yet. Run manual smoke tests with these PLZ codes:
 
 | PLZ | Expected Result | Purpose |
 |-----|----------------|---------|
@@ -391,10 +401,17 @@ This is an independent solidarity project. Not affiliated with any political par
 | 404 on API call | Check Flask is on port 5000 |
 | Images not loading | Check abgeordnetenwatch.de access |
 | Gender wrong | Update gender_data.py |
+| Timeout message | Ensure Firefox + geckodriver are installed and reachable; retry |
+
+## ⚠️ Known Limitations
+- Heavy reliance on Selenium scraping; changes on abgeordnetenwatch.de can break parsing.
+- Requires Firefox and geckodriver installed locally (no headless Chromium fallback).
+- No automated tests yet; manual smoke tests recommended after changes.
+- Caching is in-memory plus `data/plz_cache.json` without concurrency control.
 
 ---
 
-**Project Status:** ✅ Production Ready v1.0  
+**Project Status:** Beta (local use) v0.0.0  
 **Last Updated:** January 16, 2026  
 **Frontend:** http://localhost:3000  
 **Backend:** http://localhost:5000  
