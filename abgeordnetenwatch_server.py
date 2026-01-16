@@ -9,10 +9,17 @@ from selenium.webdriver.firefox.options import Options
 import time
 import csv
 import os
+import json
+from datetime import datetime, timedelta
 from gender_data import GENDER_LOOKUP
 
 app = Flask(__name__)
 CORS(app)
+
+# Cache for PLZ results (in-memory cache)
+PLZ_CACHE = {}
+CACHE_FILE = 'data/plz_cache.json'
+CACHE_DURATION = timedelta(days=7)  # Cache valid for 7 days
 
 # Comprehensive German first names for fallback gender detection
 MALE_FIRST_NAMES = {
@@ -147,6 +154,64 @@ def load_contact_urls():
         print("Warning: data/bundestag_contacts.csv not found")
 
 load_contact_urls()
+
+def load_cache():
+    """Load cache from disk"""
+    global PLZ_CACHE
+    if os.path.exists(CACHE_FILE):
+        try:
+            with open(CACHE_FILE, 'r', encoding='utf-8') as f:
+                cache_data = json.load(f)
+                # Convert string timestamps back to datetime objects
+                for plz, data in cache_data.items():
+                    if 'timestamp' in data:
+                        data['timestamp'] = datetime.fromisoformat(data['timestamp'])
+                PLZ_CACHE = cache_data
+                print(f"✓ Loaded {len(PLZ_CACHE)} cached PLZ entries")
+        except Exception as e:
+            print(f"Warning: Could not load cache: {e}")
+            PLZ_CACHE = {}
+
+def save_cache():
+    """Save cache to disk"""
+    try:
+        os.makedirs('data', exist_ok=True)
+        # Convert datetime objects to strings for JSON serialization
+        cache_data = {}
+        for plz, data in PLZ_CACHE.items():
+            cache_entry = data.copy()
+            if 'timestamp' in cache_entry:
+                cache_entry['timestamp'] = cache_entry['timestamp'].isoformat()
+            cache_data[plz] = cache_entry
+        
+        with open(CACHE_FILE, 'w', encoding='utf-8') as f:
+            json.dump(cache_data, f, ensure_ascii=False, indent=2)
+        print(f"✓ Saved {len(cache_data)} PLZ entries to cache")
+    except Exception as e:
+        print(f"Warning: Could not save cache: {e}")
+
+def get_cached_result(plz):
+    """Get cached result if available and not expired"""
+    if plz in PLZ_CACHE:
+        cache_entry = PLZ_CACHE[plz]
+        timestamp = cache_entry.get('timestamp')
+        if timestamp and datetime.now() - timestamp < CACHE_DURATION:
+            print(f"✓ Using cached result for PLZ {plz} (cached {(datetime.now() - timestamp).days} days ago)")
+            return cache_entry.get('data')
+        else:
+            print(f"Cache expired for PLZ {plz}")
+            del PLZ_CACHE[plz]
+    return None
+
+def cache_result(plz, data):
+    """Cache a result"""
+    PLZ_CACHE[plz] = {
+        'data': data,
+        'timestamp': datetime.now()
+    }
+    save_cache()
+
+load_cache()
 
 def scrape_abgeordnetenwatch_by_plz(plz):
     """
@@ -298,23 +363,39 @@ def search_plz():
     
     try:
         print(f"Searching for PLZ: {plz}")
+        
+        # Try to get cached result first
+        cached = get_cached_result(plz)
+        if cached:
+            print(f"⚡ Returning cached result for PLZ {plz}")
+            return jsonify(cached)
+        
+        # If no cache, scrape the data
         results = scrape_abgeordnetenwatch_by_plz(plz)
         
         # Check if results indicate multiple Wahlkreis options
         if isinstance(results, dict) and results.get('type') == 'multiple_wahlkreis':
-            return jsonify({
+            response_data = {
                 'plz': plz,
                 'type': 'multiple_wahlkreis',
                 'message': f'PLZ {plz} gehört zu mehreren Wahlkreisen',
                 'options': results['options']
-            })
+            }
+            # Cache the result
+            cache_result(plz, response_data)
+            return jsonify(response_data)
         
-        return jsonify({
+        response_data = {
             'plz': plz,
             'type': 'members',
             'count': len(results),
             'members': results
-        })
+        }
+        
+        # Cache the result
+        cache_result(plz, response_data)
+        
+        return jsonify(response_data)
     
     except Exception as e:
         print(f"Error: {e}")
@@ -336,6 +417,15 @@ def scrape_url():
     
     try:
         print(f"Scraping URL: {url}")
+        
+        # Create a cache key from the URL
+        url_cache_key = f"url_{hash(url)}"
+        
+        # Try to get cached result
+        cached = get_cached_result(url_cache_key)
+        if cached:
+            print(f"⚡ Returning cached result for URL")
+            return jsonify(cached)
         
         # Setup Firefox with headless mode
         firefox_options = Options()
@@ -411,11 +501,16 @@ def scrape_url():
                     print(f"Error extracting politician: {e}")
                     continue
             
-            return jsonify({
+            response_data = {
                 'type': 'members',
                 'count': len(politicians),
                 'members': politicians
-            })
+            }
+            
+            # Cache the result
+            cache_result(url_cache_key, response_data)
+            
+            return jsonify(response_data)
         
         finally:
             driver.quit()

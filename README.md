@@ -26,11 +26,11 @@
    cd frontend
    npm run dev
    ```
-3. Wait until you see: `Local: http://localhost:5173`
+3. Wait until you see: `Local: http://localhost:3000`
 
 ### Step 3: Open in Browser
 1. Open your web browser (Chrome, Firefox, Edge)
-2. Go to: **http://localhost:5173**
+2. Go to: **http://localhost:3000**
 3. ✅ **The app is now running!**
 
 > **Note:** You need both windows open for the app to work. To stop: Press `Ctrl+C` in both windows.
@@ -60,17 +60,14 @@ free.iran/
 │   ├── App.tsx                    # Main application
 │   ├── translations.ts            # Multi-language support (EN/DE/FA)
 │   ├── types.ts                   # TypeScript definitions
-│   ├── vite.config.ts             # Vite configuration
+│   ├── vite.config.ts             # Vite configuration (port: 3000)
 │   └── package.json               # Frontend dependencies
 │
 ├── data/
 │   └── bundestag_contacts.csv     # 634 MPs with contact URLs
 │
-├── static/
-│   └── index.html                 # Standalone HTML version (backup)
-│
-├── abgeordnetenwatch_server.py    # Flask API server
-├── gender_data.py                 # 1037 gender mappings
+├── abgeordnetenwatch_server.py    # Flask API server (port: 5000)
+├── gender_data.py                 # 1037 gender mappings for salutations
 ├── requirements.txt               # Python dependencies
 └── venv/                          # Python virtual environment
 ```
@@ -116,7 +113,7 @@ python abgeordnetenwatch_server.py
 cd frontend
 npm run dev
 ```
-✅ Frontend: http://localhost:5173
+✅ Frontend: http://localhost:3000
 
 ## 🛠️ Technology Stack
 
@@ -274,8 +271,8 @@ python abgeordnetenwatch_server.py
 
 ### Frontend Not Loading
 ```bash
-# Check if port 5173 is in use
-netstat -ano | findstr :5173
+# Check if port 3000 is in use
+netstat -ano | findstr :3000
 
 # Clear cache and reinstall
 cd frontend
@@ -397,9 +394,9 @@ This is an independent solidarity project. Not affiliated with any political par
 
 ---
 
-**Project Status:** ✅ Production Ready  
-**Last Updated:** January 14, 2026  
-**Frontend:** http://localhost:5173  
+**Project Status:** ✅ Production Ready v1.0  
+**Last Updated:** January 16, 2026  
+**Frontend:** http://localhost:3000  
 **Backend:** http://localhost:5000  
 
 **Made with ❤️ for human rights and democracy**
